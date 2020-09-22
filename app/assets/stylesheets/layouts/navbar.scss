@@ -14,9 +14,9 @@
     }
     &-nav {
       & > li {
-        margin-left: 0;
+        margin-left: 20px;
         &:first-child{
-          margin-right:auto;
+          margin-right:0;
         }
         .commonNavIcon{
           height: 24px;
