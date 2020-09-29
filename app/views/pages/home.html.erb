@@ -1,4 +1,6 @@
-<%= link_to "サインアウト", destroy_user_session_path, method: :delete %>
+<% if user_signed_in? %> 
+  <%= link_to "サインアウト", destroy_user_session_path, method: :delete %>
+<% end %>
 <p>仮のトップページ</p>
 
 <%# ここに追加 %>
