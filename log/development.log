@@ -104,3 +104,113 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.0ms | Allocations: 8777)
 
 
+Started GET "/" for ::1 at 2020-09-29 14:03:46 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.4ms | Allocations: 144)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.7ms | Allocations: 254)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.0ms | Allocations: 8755)
+
+
+Started GET "/" for ::1 at 2020-09-29 14:13:24 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.5ms | Allocations: 144)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms | Allocations: 6855)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!DOCTYPE html>
+<html>
+  <head>
+    <title>Techpitgram</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <%# ここから %>
+    <%=render "partial/navbar"%>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info">
+        <%= flash[:notice]%>
+      </div>
+    <%= end %>
+    <% if flash[:alert] %>
+    <div class="alert alert-danger">
+      <%= flash[:alert]%>
+    </div>
+    <%= end %>
+
+    
+     <%# ここまで %>
+    <%= yield %>
+  </body>
+</html>
+
+):
+1:    <!DOCTYPE html>
+2:    <html>
+3:      <head>
+4:        <title>Techpitgram</title>
+5:        <%= csrf_meta_tags %>
+6:        <%= csp_meta_tag %>
+7:    
+8:        <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+9:        <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+10:      </head>
+11:    
+12:      <body>
+13:      <%# ここから %>
+14:        <%=render "partial/navbar"%>
+15:    
+16:        <% if flash[:notice] %>
+17:          <div class="alert alert-info">
+18:            <%= flash[:notice]%>
+19:          </div>
+20:        <%= end %>
+21:        <% if flash[:alert] %>
+22:        <div class="alert alert-danger">
+23:          <%= flash[:alert]%>
+24:        </div>
+25:        <%= end %>
+26:    
+27:        
+28:         <%# ここまで %>
+29:        <%= yield %>
+30:      </body>
+31:    </html>
+  
+app/views/layouts/application.html.erb:20: syntax error, unexpected end
+app/views/layouts/application.html.erb:25: syntax error, unexpected end
+app/views/layouts/application.html.erb:34: syntax error, unexpected end, expecting ')'
+app/views/layouts/application.html.erb:20: syntax error, unexpected end
+app/views/layouts/application.html.erb:25: syntax error, unexpected end
+app/views/layouts/application.html.erb:34: syntax error, unexpected end, expecting ')'
+app/views/layouts/application.html.erb:20: syntax error, unexpected end
+app/views/layouts/application.html.erb:25: syntax error, unexpected end
+app/views/layouts/application.html.erb:34: syntax error, unexpected end, expecting ')'
+app/views/layouts/application.html.erb:20: syntax error, unexpected end
+app/views/layouts/application.html.erb:25: syntax error, unexpected end
+app/views/layouts/application.html.erb:34: syntax error, unexpected end, expecting ')'
+app/views/layouts/application.html.erb:20: syntax error, unexpected end
+app/views/layouts/application.html.erb:25: syntax error, unexpected end
+app/views/layouts/application.html.erb:34: syntax error, unexpected end, expecting ')'
+app/views/layouts/application.html.erb:20: syntax error, unexpected end
+app/views/layouts/application.html.erb:25: syntax error, unexpected end
+app/views/layouts/application.html.erb:34: syntax error, unexpected end, expecting ')'
+Started GET "/" for ::1 at 2020-09-29 14:13:50 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.7ms | Allocations: 144)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.5ms | Allocations: 260)
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.0ms | Allocations: 8944)
+
+
