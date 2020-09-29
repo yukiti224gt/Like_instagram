@@ -406,3 +406,13 @@ Processing by Devise::RegistrationsController#new as HTML
 Completed 200 OK in 75ms (Views: 64.3ms | ActiveRecord: 0.7ms | Allocations: 23180)
 
 
+Started GET "/users/sign_up" for ::1 at 2020-09-29 14:24:38 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.4ms | Allocations: 206)
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 490)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 7.0ms | Allocations: 2296)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 39.0ms | ActiveRecord: 0.0ms | Allocations: 11408)
+
+
