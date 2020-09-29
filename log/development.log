@@ -33,3 +33,19 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 1394ms (Views: 1393.4ms | ActiveRecord: 0.0ms | Allocations: 70887)
 
 
+Started GET "/" for ::1 at 2020-09-29 13:42:34 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 27)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 7321)
+
+
+Started GET "/" for ::1 at 2020-09-29 13:42:36 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.1ms | Allocations: 26)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 20.0ms | ActiveRecord: 0.0ms | Allocations: 7283)
+
+
