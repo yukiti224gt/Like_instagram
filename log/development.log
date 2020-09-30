@@ -974,3 +974,163 @@ Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.2ms | Allocations: 840
 
 Started GET "/" for ::1 at 2020-09-30 10:10:17 +0900
 Started GET "/users/sign_up" for ::1 at 2020-09-30 10:10:32 +0900
+Started GET "/users/sign_up" for ::1 at 2020-09-30 11:21:53 +0900
+Started GET "/users/sign_up" for ::1 at 2020-09-30 11:21:55 +0900
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::RegistrationsController#new as HTML
+Processing by PagesController#home as HTML
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :require_no_authentication rendered or redirected
+Redirected to http://localhost:3000/
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Completed 302 Found in 17ms (ActiveRecord: 0.2ms | Allocations: 11239)
+
+
+Filter chain halted as :require_no_authentication rendered or redirected
+Redirected to http://localhost:3000/
+Completed 302 Found in 17ms (ActiveRecord: 0.2ms | Allocations: 11715)
+
+
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Filter chain halted as :require_no_authentication rendered or redirected
+  ↳ app/views/pages/home.html.erb:1
+Completed 302 Found in 11ms (ActiveRecord: 0.2ms | Allocations: 5710)
+
+
+  Rendered pages/home.html.erb within layouts/application (Duration: 7.6ms | Allocations: 3782)
+Started GET "/" for ::1 at 2020-09-30 11:21:55 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:1
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.9ms | Allocations: 992)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.6ms | Allocations: 271)
+Completed 200 OK in 23ms (Views: 22.5ms | ActiveRecord: 0.1ms | Allocations: 10035)
+
+
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 74)
+Completed 200 OK in 62ms (Views: 59.9ms | ActiveRecord: 0.2ms | Allocations: 32125)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-09-30 11:21:58 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"hoLnMenvq+2MqsgzG/drc8xKS2fP0XqK07QvOyfE1KeuaWZoGbvv/gAS9ePDIvxuZg5m8p+s+L6QUaMMpihgSg=="}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 0.1ms | Allocations: 2346)
+
+
+Started GET "/" for ::1 at 2020-09-30 11:21:58 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 110)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms | Allocations: 7458)
+
+
+Started GET "/" for ::1 at 2020-09-30 11:21:59 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 105)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 15.7ms | ActiveRecord: 0.0ms | Allocations: 7435)
+
+
+Started GET "/" for ::1 at 2020-09-30 11:22:00 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 105)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.0ms | Allocations: 7437)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-09-30 11:22:05 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 1089)
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 2718)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class = "main">
+  <div class = "card devise-card">
+    <div class = "form-wrap">
+      <div class = "form-group text-center">
+        <h2 class = "logo-img mx-auto"> </h2>
+          <p class = "text-secondary">友達の写真や動画をチェックしよう</p>
+      </div>
+      <%= form_with sope: resource, as: resource_name, url: registration_path
+      (resource_name), local: true do |f| %>
+      
+    </div>
+  </div>  
+</div>
+
+):
+1:    <div class = "main">
+2:      <div class = "card devise-card">
+3:        <div class = "form-wrap">
+4:          <div class = "form-group text-center">
+5:            <h2 class = "logo-img mx-auto"> </h2>
+6:              <p class = "text-secondary">友達の写真や動画をチェックしよう</p>
+7:          </div>
+8:          <%= form_with sope: resource, as: resource_name, url: registration_path
+9:          (resource_name), local: true do |f| %>
+10:          
+11:        </div>
+12:      </div>  
+13:    </div>
+  
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+Started GET "/" for ::1 at 2020-09-30 11:50:50 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 105)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 13.1ms | ActiveRecord: 0.0ms | Allocations: 7442)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-30 11:50:58 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.6ms | Allocations: 559)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1993)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.6ms | ActiveRecord: 0.0ms | Allocations: 10278)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-30 12:37:14 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 546)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1926)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 11112)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-30 12:37:15 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1067)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.0ms | Allocations: 8688)
+
+
