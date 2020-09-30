@@ -1169,3 +1169,28 @@ ActionView::Template::Error (Error: File to import not found or unreadable: comm
   
 app/assets/stylesheets/application.scss:21
 app/views/layouts/application.html.erb:8
+Started GET "/users/sign_in" for ::1 at 2020-09-30 12:49:14 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1060)
+Completed 500 Internal Server Error in 60ms (ActiveRecord: 0.0ms | Allocations: 16791)
+
+
+  
+ActionView::Template::Error (Error: File to import not found or unreadable: users/devise.
+        on line 23:2 of app/assets/stylesheets/application.scss
+>>  @import "users/devise";
+
+   -^
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+  
+app/assets/stylesheets/application.scss:23
+app/views/layouts/application.html.erb:8
