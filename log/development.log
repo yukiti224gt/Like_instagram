@@ -1194,3 +1194,51 @@ ActionView::Template::Error (Error: File to import not found or unreadable: user
   
 app/assets/stylesheets/application.scss:23
 app/views/layouts/application.html.erb:8
+Started GET "/users/sign_in" for ::1 at 2020-09-30 14:45:30 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1060)
+Completed 500 Internal Server Error in 78ms (ActiveRecord: 0.0ms | Allocations: 16790)
+
+
+  
+ActionView::Template::Error (Error: File to import not found or unreadable: users/devise.
+        on line 23:2 of app/assets/stylesheets/application.scss
+>>  @import "users/devise";
+
+   -^
+):
+     5:     <%= csrf_meta_tags %>
+     6:     <%= csp_meta_tag %>
+     7: 
+     8:     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     9:     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    10:   </head>
+    11: 
+  
+app/assets/stylesheets/application.scss:23
+app/views/layouts/application.html.erb:8
+Started GET "/users/sign_in" for ::1 at 2020-09-30 14:58:41 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1060)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from _app_views_layouts_application_html_erb__1779919304705366286_70349143134500 at /Users/yukiti/Like_instagram/app/views/layouts/application.html.erb:8)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1930ms (Views: 1928.8ms | ActiveRecord: 0.0ms | Allocations: 71120)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-30 15:11:07 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1060)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1390ms (Views: 1388.7ms | ActiveRecord: 0.0ms | Allocations: 75422)
+
+
