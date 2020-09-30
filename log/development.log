@@ -1278,3 +1278,554 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 19ms (Views: 17.5ms | ActiveRecord: 0.0ms | Allocations: 11420)
 
 
+Started GET "/users/sign_up" for ::1 at 2020-09-30 15:24:29 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1250)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 3035)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class = "main">
+  <div class = "card devise-card">
+    <div class = "form-wrap">
+      <div class = "form-group text-center">
+        <h2 class = "logo-img mx-auto"> </h2>
+          <p class = "text-secondary">友達の写真や動画をチェックしよう</p>
+      </div>
+      <%= form_with sope: resource, as: resource_name, url: registration_path
+      (resource_name), local: true do |f| %>
+        <div class="form-group">
+          <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス",
+          class: "form-control"%>
+        </div>
+    
+         <div class="form-group">
+          <%= f.text_field :name, autofocus: true, placeholder: "フルネーム",
+          class: "form-control"%>
+        </div>
+
+         <div class="form-group">
+          <%= f.password_field :email, autofocus: off, placeholder: "パスワード",
+          class: "form-control"%>
+        </div>
+
+         <div class="form-group">
+          <%= f.password_field :email, autofocus: true, placeholder: "パスワードの確認",
+          class: "form-control"%>
+        </div>
+
+         <div class="actions">
+          <%= f.submit "登録する", class: "btn btn-primary w-100"%>
+        </div>
+      <% end %>
+
+      <br>
+        <p class = "devise-link">
+          アカウントをお持ちですか？
+          <%= link_to "サインインする", new_user_session_path%>
+    </div>
+  </div>  
+</div>
+
+):
+1:    <div class = "main">
+2:      <div class = "card devise-card">
+3:        <div class = "form-wrap">
+4:          <div class = "form-group text-center">
+5:            <h2 class = "logo-img mx-auto"> </h2>
+6:              <p class = "text-secondary">友達の写真や動画をチェックしよう</p>
+7:          </div>
+8:          <%= form_with sope: resource, as: resource_name, url: registration_path
+9:          (resource_name), local: true do |f| %>
+10:            <div class="form-group">
+11:              <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス",
+12:              class: "form-control"%>
+13:            </div>
+14:        
+15:             <div class="form-group">
+16:              <%= f.text_field :name, autofocus: true, placeholder: "フルネーム",
+17:              class: "form-control"%>
+18:            </div>
+19:    
+20:             <div class="form-group">
+21:              <%= f.password_field :email, autofocus: off, placeholder: "パスワード",
+22:              class: "form-control"%>
+23:            </div>
+24:    
+25:             <div class="form-group">
+26:              <%= f.password_field :email, autofocus: true, placeholder: "パスワードの確認",
+27:              class: "form-control"%>
+28:            </div>
+29:    
+30:             <div class="actions">
+31:              <%= f.submit "登録する", class: "btn btn-primary w-100"%>
+32:            </div>
+33:          <% end %>
+34:    
+35:          <br>
+36:            <p class = "devise-link">
+37:              アカウントをお持ちですか？
+38:              <%= link_to "サインインする", new_user_session_path%>
+39:        </div>
+40:      </div>  
+41:    </div>
+  
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+Started GET "/" for ::1 at 2020-09-30 15:24:43 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.7ms | Allocations: 265)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 93)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.0ms | Allocations: 8919)
+
+
+Started GET "/" for ::1 at 2020-09-30 15:24:45 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 107)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 7534)
+
+
+Started GET "/" for ::1 at 2020-09-30 15:25:04 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 105)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 17ms (Views: 16.8ms | ActiveRecord: 0.0ms | Allocations: 7527)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-09-30 15:26:54 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1236)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1813)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class = "main">
+  <div class = "card devise-card">
+    <div class = "form-wrap">
+      <div class = "form-group text-center">
+        <h2 class = "logo-img mx-auto"> </h2>
+          <p class = "text-secondary">友達の写真や動画をチェックしよう</p>
+      </div>
+      <%= form_with sope: resource, as: resource_name, url: registration_path
+      (resource_name), local: true do |f| %>
+        <div class="form-group">
+          <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス",
+          class: "form-control"%>
+        </div>
+    
+         <div class="form-group">
+          <%= f.text_field :name, autofocus: true, placeholder: "フルネーム",
+          class: "form-control"%>
+        </div>
+
+         <div class="form-group">
+          <%= f.password_field :email, autofocus: off, placeholder: "パスワード",
+          class: "form-control"%>
+        </div>
+
+         <div class="form-group">
+          <%= f.password_field :email, autofocus: true, placeholder: "パスワードの確認",
+          class: "form-control"%>
+        </div>
+
+         <div class="actions">
+          <%= f.submit "登録する", class: "btn btn-primary w-100"%>
+        </div>
+      <% end %>
+
+      <br>
+        <p class = "devise-link">
+          アカウントをお持ちですか？
+          <%= link_to "サインインする", new_user_session_path%>
+    </div>
+  </div>  
+</div>
+
+):
+1:    <div class = "main">
+2:      <div class = "card devise-card">
+3:        <div class = "form-wrap">
+4:          <div class = "form-group text-center">
+5:            <h2 class = "logo-img mx-auto"> </h2>
+6:              <p class = "text-secondary">友達の写真や動画をチェックしよう</p>
+7:          </div>
+8:          <%= form_with sope: resource, as: resource_name, url: registration_path
+9:          (resource_name), local: true do |f| %>
+10:            <div class="form-group">
+11:              <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス",
+12:              class: "form-control"%>
+13:            </div>
+14:        
+15:             <div class="form-group">
+16:              <%= f.text_field :name, autofocus: true, placeholder: "フルネーム",
+17:              class: "form-control"%>
+18:            </div>
+19:    
+20:             <div class="form-group">
+21:              <%= f.password_field :email, autofocus: off, placeholder: "パスワード",
+22:              class: "form-control"%>
+23:            </div>
+24:    
+25:             <div class="form-group">
+26:              <%= f.password_field :email, autofocus: true, placeholder: "パスワードの確認",
+27:              class: "form-control"%>
+28:            </div>
+29:    
+30:             <div class="actions">
+31:              <%= f.submit "登録する", class: "btn btn-primary w-100"%>
+32:            </div>
+33:          <% end %>
+34:    
+35:          <br>
+36:            <p class = "devise-link">
+37:              アカウントをお持ちですか？
+38:              <%= link_to "サインインする", new_user_session_path%>
+39:        </div>
+40:      </div>  
+41:    </div>
+  
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+Started GET "/users/sign_up" for ::1 at 2020-09-30 15:30:46 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1253)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 3040)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class = "main">
+  <div class = "card devise-card">
+    <div class = "form-wrap">
+      <div class = "form-group text-center">
+        <h2 class = "logo-img mx-auto"> </h2>
+          <p class = "text-secondary">友達の写真や動画をチェックしよう</p>
+      </div>
+      <%= form_with scope: resource, as: resource_name, url: registration_path
+      (resource_name), local: true do |f| %>
+        <div class="form-group">
+          <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス",
+          class: "form-control"%>
+        </div>
+    
+         <div class="form-group">
+          <%= f.text_field :name, autofocus: true, placeholder: "フルネーム",
+          class: "form-control"%>
+        </div>
+
+         <div class="form-group">
+          <%= f.password_field :email, autofocus: off, placeholder: "パスワード",
+          class: "form-control"%>
+        </div>
+
+         <div class="form-group">
+          <%= f.password_field :email, autofocus: true, placeholder: "パスワードの確認",
+          class: "form-control"%>
+        </div>
+
+         <div class="actions">
+          <%= f.submit "登録する", class: "btn btn-primary w-100"%>
+        </div>
+      <% end %>
+
+      <br>
+        <p class = "devise-link">
+          アカウントをお持ちですか？
+          <%= link_to "サインインする", new_user_session_path%>
+    </div>
+  </div>  
+</div>
+
+):
+1:    <div class = "main">
+2:      <div class = "card devise-card">
+3:        <div class = "form-wrap">
+4:          <div class = "form-group text-center">
+5:            <h2 class = "logo-img mx-auto"> </h2>
+6:              <p class = "text-secondary">友達の写真や動画をチェックしよう</p>
+7:          </div>
+8:          <%= form_with scope: resource, as: resource_name, url: registration_path
+9:          (resource_name), local: true do |f| %>
+10:            <div class="form-group">
+11:              <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス",
+12:              class: "form-control"%>
+13:            </div>
+14:        
+15:             <div class="form-group">
+16:              <%= f.text_field :name, autofocus: true, placeholder: "フルネーム",
+17:              class: "form-control"%>
+18:            </div>
+19:    
+20:             <div class="form-group">
+21:              <%= f.password_field :email, autofocus: off, placeholder: "パスワード",
+22:              class: "form-control"%>
+23:            </div>
+24:    
+25:             <div class="form-group">
+26:              <%= f.password_field :email, autofocus: true, placeholder: "パスワードの確認",
+27:              class: "form-control"%>
+28:            </div>
+29:    
+30:             <div class="actions">
+31:              <%= f.submit "登録する", class: "btn btn-primary w-100"%>
+32:            </div>
+33:          <% end %>
+34:    
+35:          <br>
+36:            <p class = "devise-link">
+37:              アカウントをお持ちですか？
+38:              <%= link_to "サインインする", new_user_session_path%>
+39:        </div>
+40:      </div>  
+41:    </div>
+  
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+Started GET "/users/sign_up" for ::1 at 2020-09-30 15:31:23 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 1250)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 3035)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <div class = "main">
+  <div class = "card devise-card">
+    <div class = "form-wrap">
+      <div class = "form-group text-center">
+        <h2 class = "logo-img mx-auto"> </h2>
+          <p class = "text-secondary">友達の写真や動画をチェックしよう</p>
+      </div>
+      <%= form_with scope: resource, as: resource_name, url: registration_path
+      (resource_name), local: true do |f| %>
+        <div class="form-group">
+          <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス",
+          class: "form-control"%>
+        </div>
+    
+         <div class="form-group">
+          <%= f.text_field :name, autofocus: true, placeholder: "フルネーム",
+          class: "form-control"%>
+        </div>
+
+         <div class="form-group">
+          <%= f.password_field :email, autofocus: off, placeholder: "パスワード",
+          class: "form-control"%>
+        </div>
+
+         <div class="form-group">
+          <%= f.password_field :email, autofocus: true, placeholder: "パスワードの確認",
+          class: "form-control"%>
+        </div>
+
+         <div class="actions">
+          <%= f.submit "登録する", class: "btn btn-primary w-100"%>
+        </div>
+      <% end %>
+
+      <br>
+        <p class = "devise-link">
+          アカウントをお持ちですか？
+          <%= link_to "サインインする", new_user_session_path%>
+    </div>
+  </div>  
+</div>
+
+):
+1:    <div class = "main">
+2:      <div class = "card devise-card">
+3:        <div class = "form-wrap">
+4:          <div class = "form-group text-center">
+5:            <h2 class = "logo-img mx-auto"> </h2>
+6:              <p class = "text-secondary">友達の写真や動画をチェックしよう</p>
+7:          </div>
+8:          <%= form_with scope: resource, as: resource_name, url: registration_path
+9:          (resource_name), local: true do |f| %>
+10:            <div class="form-group">
+11:              <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス",
+12:              class: "form-control"%>
+13:            </div>
+14:        
+15:             <div class="form-group">
+16:              <%= f.text_field :name, autofocus: true, placeholder: "フルネーム",
+17:              class: "form-control"%>
+18:            </div>
+19:    
+20:             <div class="form-group">
+21:              <%= f.password_field :email, autofocus: off, placeholder: "パスワード",
+22:              class: "form-control"%>
+23:            </div>
+24:    
+25:             <div class="form-group">
+26:              <%= f.password_field :email, autofocus: true, placeholder: "パスワードの確認",
+27:              class: "form-control"%>
+28:            </div>
+29:    
+30:             <div class="actions">
+31:              <%= f.submit "登録する", class: "btn btn-primary w-100"%>
+32:            </div>
+33:          <% end %>
+34:    
+35:          <br>
+36:            <p class = "devise-link">
+37:              アカウントをお持ちですか？
+38:              <%= link_to "サインインする", new_user_session_path%>
+39:        </div>
+40:      </div>  
+41:    </div>
+  
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+app/views/devise/registrations/new.html.erb:9: syntax error, unexpected ',', expecting end
+app/views/devise/registrations/new.html.erb:44: syntax error, unexpected end, expecting end-of-input
+Started GET "/users/sign_in" for ::1 at 2020-09-30 15:33:24 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.6ms | Allocations: 546)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1927)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 17ms (Views: 15.6ms | ActiveRecord: 0.0ms | Allocations: 11407)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-30 15:33:25 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1069)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 8776)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-30 15:33:25 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1060)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 13ms (Views: 11.9ms | ActiveRecord: 0.0ms | Allocations: 8770)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-30 15:33:26 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1060)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.0ms | Allocations: 8769)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-09-30 15:33:29 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 722.3ms | Allocations: 463105)
+Completed 500 Internal Server Error in 725ms (ActiveRecord: 0.0ms | Allocations: 464344)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `off' for #<#<Class:0x00007ff6e089a060>:0x00007ff6dfef7418>):
+    17:         </div>
+    18: 
+    19:          <div class="form-group">
+    20:           <%= f.password_field :email, autofocus: off, placeholder: "パスワード",
+    21:           class: "form-control"%>
+    22:         </div>
+    23: 
+  
+app/views/devise/registrations/new.html.erb:20
+app/views/devise/registrations/new.html.erb:8
+Started GET "/users/sign_up" for ::1 at 2020-09-30 15:34:15 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.4ms | Allocations: 786)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.3ms | Allocations: 93)
+Completed 200 OK in 17ms (Views: 16.0ms | ActiveRecord: 0.0ms | Allocations: 10219)
+
+
+Started POST "/users" for ::1 at 2020-09-30 15:34:38 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"VEuaiZDIm7KLkzuE+Zb8A5bN9yFtybyzovVx7DzrFTag+YCwqeN/ixjXlOIwBxfD7OwLKwV6s0wwNGVW0/FiFQ==", "user"=>{"email"=>"aaaaaa", "name"=>"abcd"}, "commit"=>"登録する"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "aaaaaa"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 497)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 20ms (Views: 9.5ms | ActiveRecord: 0.4ms | Allocations: 15533)
+
+
+Started POST "/users" for ::1 at 2020-09-30 15:34:56 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"fOVXhtdWjwI0xbNT7JEVzKTYV2XdhdqxS0KTbJGg5kWIV02/7n1rO6eBHDUlAP4M3vmrb7U21U7Zg4fWfrqRZg==", "user"=>{"email"=>"Yuki123TP", "name"=>"abcd"}, "commit"=>"登録する"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yuki123tp"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 483)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 29ms (Views: 22.0ms | ActiveRecord: 0.4ms | Allocations: 14085)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-30 15:35:17 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.1ms | Allocations: 546)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1931)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.1ms | Allocations: 5)
+Completed 200 OK in 21ms (Views: 19.7ms | ActiveRecord: 0.0ms | Allocations: 10311)
+
+
