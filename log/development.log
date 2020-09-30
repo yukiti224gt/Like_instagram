@@ -1242,3 +1242,39 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 1390ms (Views: 1388.7ms | ActiveRecord: 0.0ms | Allocations: 75422)
 
 
+Started GET "/users/sign_in" for ::1 at 2020-09-30 15:21:38 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.3ms | Allocations: 546)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1930)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.0ms | Allocations: 12397)
+
+
+  
+ActionView::Template::Error (Missing partial partial/_footer with {:locale=>[:en], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/Users/yukiti/Like_instagram/app/views"
+  * "/Library/Ruby/Gems/2.6.0/gems/devise-4.7.3/app/views"
+  * "/Library/Ruby/Gems/2.6.0/gems/actiontext-6.0.3.2/app/views"
+  * "/Library/Ruby/Gems/2.6.0/gems/actionmailbox-6.0.3.2/app/views"
+):
+    25:       <% end %>
+    26:       <%= yield %>
+    27: 
+    28:       <%= render "partial/footer" %>
+    29:     </div>
+    30:   </body>
+    31: </html>
+  
+app/views/layouts/application.html.erb:28
+Started GET "/users/sign_in" for ::1 at 2020-09-30 15:23:38 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 1.2ms | Allocations: 546)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1927)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.3ms | Allocations: 95)
+Completed 200 OK in 19ms (Views: 17.5ms | ActiveRecord: 0.0ms | Allocations: 11420)
+
+
