@@ -703,3 +703,261 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 32ms (Views: 24.1ms | ActiveRecord: 0.0ms | Allocations: 16287)
 
 
+Started GET "/" for ::1 at 2020-09-30 01:34:39 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 6.5ms | Allocations: 421)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 143ms (Views: 133.4ms | ActiveRecord: 0.0ms | Allocations: 21782)
+
+
+Started GET "/" for ::1 at 2020-09-30 01:34:41 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 108)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.7ms | ActiveRecord: 0.0ms | Allocations: 7440)
+
+
+Started GET "/" for ::1 at 2020-09-30 01:34:44 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 106)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 20.7ms | ActiveRecord: 0.0ms | Allocations: 7440)
+
+
+Started GET "/" for ::1 at 2020-09-30 01:34:47 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.8ms | Allocations: 106)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 25.8ms | ActiveRecord: 0.0ms | Allocations: 7438)
+
+
+Started GET "/" for ::1 at 2020-09-30 01:34:48 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 106)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.8ms | ActiveRecord: 0.0ms | Allocations: 7444)
+
+
+Started GET "/" for ::1 at 2020-09-30 09:53:00 +0900
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 3.8ms | Allocations: 105)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 58ms (Views: 44.3ms | ActiveRecord: 0.0ms | Allocations: 7435)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-30 09:53:04 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 2.3ms | Allocations: 638)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 55.3ms | Allocations: 5393)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 129ms (Views: 95.6ms | ActiveRecord: 2.4ms | Allocations: 20752)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-09-30 09:53:11 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"c+UssPjgITngaZz4tdDeLdTVtlinOWhNZb+uKlDJSDUF6qdneHi0zFEU4suHt2IL3NYhk+IksvnIQwPsiRaFww==", "user"=>{"email"=>"mamekiti084@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "mamekiti084@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 248ms (ActiveRecord: 0.8ms | Allocations: 5250)
+
+
+Started GET "/" for ::1 at 2020-09-30 09:53:11 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:1
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.7ms | Allocations: 996)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 1.0ms | Allocations: 257)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.2ms | Allocations: 8780)
+
+
+Started DELETE "/users/sign_out" for ::1 at 2020-09-30 09:53:16 +0900
+Processing by Devise::SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"3ApWOzsk5MLhKQ7nUS0zxxHtlSCXFwkaHPvDh7m0QXuVgGTQzCbF/lGKStmgup3Ok8sY2Z7HotGA9ehVrgui4g=="}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 7ms (ActiveRecord: 0.2ms | Allocations: 2603)
+
+
+Started GET "/" for ::1 at 2020-09-30 09:53:16 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 106)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 7455)
+
+
+Started GET "/" for ::1 at 2020-09-30 09:53:17 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 105)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 14.1ms | ActiveRecord: 0.0ms | Allocations: 7434)
+
+
+Started GET "/" for ::1 at 2020-09-30 09:53:20 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 105)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.0ms | Allocations: 7437)
+
+
+Started GET "/" for ::1 at 2020-09-30 09:53:20 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 105)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.0ms | ActiveRecord: 0.0ms | Allocations: 7429)
+
+
+Started GET "/" for ::1 at 2020-09-30 09:53:20 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 105)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 10.8ms | ActiveRecord: 0.0ms | Allocations: 7432)
+
+
+Started GET "/" for ::1 at 2020-09-30 09:53:20 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 105)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 7432)
+
+
+Started GET "/" for ::1 at 2020-09-30 09:57:44 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/Users/yukiti/Like_instagram/app/controllers/application_controller.rb:12: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/application_controller.rb:12: syntax error, unexpected end-of-input, expecting end
+app/controllers/application_controller.rb:12: syntax error, unexpected end-of-input, expecting end
+app/controllers/application_controller.rb:12: syntax error, unexpected end-of-input, expecting end
+app/controllers/pages_controller.rb:1:in `<main>'
+Started GET "/users/sign_up" for ::1 at 2020-09-30 10:00:21 +0900
+Started GET "/" for ::1 at 2020-09-30 10:00:30 +0900
+Started GET "/users/sign_up" for ::1 at 2020-09-30 10:00:34 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::RegistrationsController#new as HTML
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PagesController#home as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.2ms | Allocations: 113)
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.0ms | Allocations: 675)
+  Rendered devise/shared/_error_messages.html.erb (Duration: 1.1ms | Allocations: 679)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 125)
+  Rendered devise/shared/_links.html.erb (Duration: 0.1ms | Allocations: 78)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 7.4ms | Allocations: 4890)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 8.8ms | Allocations: 5510)
+[Webpacker] Everything's up-to-date. Nothing to do
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 51.2ms | ActiveRecord: 0.0ms | Allocations: 24530)
+
+
+Completed 200 OK in 67ms (Views: 58.5ms | ActiveRecord: 0.6ms | Allocations: 34517)
+
+
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 56ms (Views: 55.4ms | ActiveRecord: 0.0ms | Allocations: 25787)
+
+
+Started GET "/" for ::1 at 2020-09-30 10:00:42 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 0.3ms | Allocations: 107)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.0ms | Allocations: 7442)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-09-30 10:00:46 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/shared/_error_messages.html.erb (Duration: 0.2ms | Allocations: 15)
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 78)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1069)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 8635)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-09-30 10:00:58 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 147)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.5ms | Allocations: 1086)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 12.5ms | ActiveRecord: 0.0ms | Allocations: 8930)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-09-30 10:01:07 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"ECSOJWGKUZQCVxc1R35BWFIeDhp6a4TUhRRZCz1B0VhVkXisYzAghTx303endH1Xy4vURA8VY60R39nYBJ5p5A==", "user"=>{"email"=>"mamekiti084@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 444)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"ECSOJWGKUZQCVxc1R35BWFIeDhp6a4TUhRRZCz1B0VhVkXisYzAghTx303endH1Xy4vURA8VY60R39nYBJ5p5A==", "user"=>{"email"=>"mamekiti084@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/shared/_links.html.erb (Duration: 0.2ms | Allocations: 134)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1062)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 8591)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-09-30 10:01:11 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"4O3wE25r3cwqKnm1M+5wBWLBgDYlQFA15sue7svOHWJXmgnDw6d7ZqJNLg/nPnb+fL9zzMM9kS4+pWBqRdFHAg==", "user"=>{"email"=>"mamekiti084@gmail.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Log in"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["email", "mamekiti084@gmail.com"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 213ms (ActiveRecord: 0.3ms | Allocations: 2837)
+
+
+Started GET "/" for ::1 at 2020-09-30 10:01:11 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:1
+  Rendered pages/home.html.erb within layouts/application (Duration: 1.7ms | Allocations: 990)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.1ms | Allocations: 75)
+Completed 200 OK in 21ms (Views: 20.4ms | ActiveRecord: 0.2ms | Allocations: 8452)
+
+
+Started GET "/" for ::1 at 2020-09-30 10:01:14 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:1
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.4ms | Allocations: 963)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 74)
+Completed 200 OK in 17ms (Views: 16.7ms | ActiveRecord: 0.2ms | Allocations: 8410)
+
+
+Started GET "/" for ::1 at 2020-09-30 10:01:18 +0900
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/pages/home.html.erb:1
+  Rendered pages/home.html.erb within layouts/application (Duration: 2.9ms | Allocations: 960)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.1ms | Allocations: 74)
+Completed 200 OK in 15ms (Views: 14.4ms | ActiveRecord: 0.2ms | Allocations: 8401)
+
+

@@ -4,6 +4,6 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   
-  validates :name, presence :true, length: { maximum : 50}
+  validates :name, presence: true, length: { maximum: 50}
   # vadidatesとは要約すると入力チェックのこと（DBに保存される前のチェック）
 end
