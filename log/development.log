@@ -4374,3 +4374,250 @@ puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
 puma (4.3.5) lib/puma/server.rb:472:in `process_client'
 puma (4.3.5) lib/puma/server.rb:328:in `block in run'
 puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/users/sign_up" for ::1 at 2020-10-01 10:25:24 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper#devise_error_messages!` is deprecated and will be
+removed in the next major version.
+
+Devise now uses a partial under "devise/shared/error_messages" to display
+error messages by default, and make them easier to customize. Update your
+views changing calls from:
+
+    <%= devise_error_messages! %>
+
+to:
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+To start customizing how errors are displayed, you can copy the partial
+from devise to your `app/views` folder. Alternatively, you can run
+`rails g devise:views` which will copy all of them again to your app.
+ (called from block in _app_views_devise_registrations_new_html_erb__3974659654203827334_70160738211020 at /Users/yukiti/Like_instagram/app/views/devise/registrations/new.html.erb:8)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 741)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 50ms (Views: 11.2ms | ActiveRecord: 0.0ms | Allocations: 14521)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-10-01 10:25:25 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"qyphrnHKaiI2rBQONIOr2lSHINk+vlGcoVDRGlaY9MRdO1k7Bzp9kqs4TnRZtlEtKUqULHxc2h7Dd3IqpGREgw==", "user"=>{"email"=>"", "name"=>""}, "commit"=>"登録する"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 555)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"qyphrnHKaiI2rBQONIOr2lSHINk+vlGcoVDRGlaY9MRdO1k7Bzp9kqs4TnRZtlEtKUqULHxc2h7Dd3IqpGREgw==", "user"=>{"email"=>"", "name"=>""}, "commit"=>"登録する"}
+[31mUnpermitted parameter: :name[0m
+  Rendering devise/sessions/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper#devise_error_messages!` is deprecated and will be
+removed in the next major version.
+
+Devise now uses a partial under "devise/shared/error_messages" to display
+error messages by default, and make them easier to customize. Update your
+views changing calls from:
+
+    <%= devise_error_messages! %>
+
+to:
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+To start customizing how errors are displayed, you can copy the partial
+from devise to your `app/views` folder. Alternatively, you can run
+`rails g devise:views` which will copy all of them again to your app.
+ (called from block in _app_views_devise_sessions_new_html_erb___554773436945220683_70160737792300 at /Users/yukiti/Like_instagram/app/views/devise/sessions/new.html.erb:8)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 548)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 10.9ms | ActiveRecord: 0.0ms | Allocations: 8395)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-10-01 10:25:27 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"V7+9TKn0/aYg6abF9b38TWleJjltz2hZLWT/BvniJ2OjDad1kN8Zn7OtCaM8LBeNE3/aMwV8Z6a/peu8FvhQQA==", "user"=>{"email"=>""}, "commit"=>"サインインする"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 405)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"V7+9TKn0/aYg6abF9b38TWleJjltz2hZLWT/BvniJ2OjDad1kN8Zn7OtCaM8LBeNE3/aMwV8Z6a/peu8FvhQQA==", "user"=>{"email"=>""}, "commit"=>"サインインする"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper#devise_error_messages!` is deprecated and will be
+removed in the next major version.
+
+Devise now uses a partial under "devise/shared/error_messages" to display
+error messages by default, and make them easier to customize. Update your
+views changing calls from:
+
+    <%= devise_error_messages! %>
+
+to:
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+To start customizing how errors are displayed, you can copy the partial
+from devise to your `app/views` folder. Alternatively, you can run
+`rails g devise:views` which will copy all of them again to your app.
+ (called from block in _app_views_devise_sessions_new_html_erb___554773436945220683_70160737792300 at /Users/yukiti/Like_instagram/app/views/devise/sessions/new.html.erb:8)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 532)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 8202)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-10-01 10:25:27 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"iVarQcnLGgUa0eXBu/aOodaosMv4qreGAqWLJBgGreB95LF48OD+PImVSqdyZ2VhrIlMwZAZuHmQZJ+e9xzaww==", "user"=>{"email"=>""}, "commit"=>"サインインする"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 409)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"iVarQcnLGgUa0eXBu/aOodaosMv4qreGAqWLJBgGreB95LF48OD+PImVSqdyZ2VhrIlMwZAZuHmQZJ+e9xzaww==", "user"=>{"email"=>""}, "commit"=>"サインインする"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper#devise_error_messages!` is deprecated and will be
+removed in the next major version.
+
+Devise now uses a partial under "devise/shared/error_messages" to display
+error messages by default, and make them easier to customize. Update your
+views changing calls from:
+
+    <%= devise_error_messages! %>
+
+to:
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+To start customizing how errors are displayed, you can copy the partial
+from devise to your `app/views` folder. Alternatively, you can run
+`rails g devise:views` which will copy all of them again to your app.
+ (called from block in _app_views_devise_sessions_new_html_erb___554773436945220683_70160737792300 at /Users/yukiti/Like_instagram/app/views/devise/sessions/new.html.erb:8)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 0.9ms | Allocations: 532)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.0ms | Allocations: 8202)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-10-01 10:25:27 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"ohEgL2QCkUJs3Anip5LNTVwUfMnGiOavAsx63ZVI+ZVWozoWXSl1e/+YpoRuAyaNJjWAw6476VCQDW5nelKOtg==", "user"=>{"email"=>""}, "commit"=>"サインインする"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 406)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"ohEgL2QCkUJs3Anip5LNTVwUfMnGiOavAsx63ZVI+ZVWozoWXSl1e/+YpoRuAyaNJjWAw6476VCQDW5nelKOtg==", "user"=>{"email"=>""}, "commit"=>"サインインする"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper#devise_error_messages!` is deprecated and will be
+removed in the next major version.
+
+Devise now uses a partial under "devise/shared/error_messages" to display
+error messages by default, and make them easier to customize. Update your
+views changing calls from:
+
+    <%= devise_error_messages! %>
+
+to:
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+To start customizing how errors are displayed, you can copy the partial
+from devise to your `app/views` folder. Alternatively, you can run
+`rails g devise:views` which will copy all of them again to your app.
+ (called from block in _app_views_devise_sessions_new_html_erb___554773436945220683_70160737792300 at /Users/yukiti/Like_instagram/app/views/devise/sessions/new.html.erb:8)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 532)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms | Allocations: 8202)
+
+
+Started GET "/users/sign_up" for ::1 at 2020-10-01 10:25:28 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper#devise_error_messages!` is deprecated and will be
+removed in the next major version.
+
+Devise now uses a partial under "devise/shared/error_messages" to display
+error messages by default, and make them easier to customize. Update your
+views changing calls from:
+
+    <%= devise_error_messages! %>
+
+to:
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+To start customizing how errors are displayed, you can copy the partial
+from devise to your `app/views` folder. Alternatively, you can run
+`rails g devise:views` which will copy all of them again to your app.
+ (called from block in _app_views_devise_registrations_new_html_erb__3974659654203827334_70160738211020 at /Users/yukiti/Like_instagram/app/views/devise/registrations/new.html.erb:8)
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 657)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 17ms (Views: 16.3ms | ActiveRecord: 0.0ms | Allocations: 8397)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-10-01 10:25:29 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper#devise_error_messages!` is deprecated and will be
+removed in the next major version.
+
+Devise now uses a partial under "devise/shared/error_messages" to display
+error messages by default, and make them easier to customize. Update your
+views changing calls from:
+
+    <%= devise_error_messages! %>
+
+to:
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+To start customizing how errors are displayed, you can copy the partial
+from devise to your `app/views` folder. Alternatively, you can run
+`rails g devise:views` which will copy all of them again to your app.
+ (called from block in _app_views_devise_sessions_new_html_erb___554773436945220683_70160737792300 at /Users/yukiti/Like_instagram/app/views/devise/sessions/new.html.erb:8)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.4ms | Allocations: 535)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 14ms (Views: 12.5ms | ActiveRecord: 0.0ms | Allocations: 8325)
+
+
+Started GET "/" for ::1 at 2020-10-01 10:35:43 +0900
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PagesController#home as HTML
+  Rendering pages/home.html.erb within layouts/application
+  Rendered pages/home.html.erb within layouts/application (Duration: 4.9ms | Allocations: 616)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from process at /Library/Ruby/Gems/2.6.0/gems/autoprefixer-rails-9.8.6.3/lib/autoprefixer-rails/processor.rb:36)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 1.4ms | Allocations: 101)
+Completed 200 OK in 735ms (Views: 722.3ms | ActiveRecord: 0.0ms | Allocations: 37881)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-10-01 10:35:53 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+DEPRECATION WARNING: [Devise] `DeviseHelper#devise_error_messages!` is deprecated and will be
+removed in the next major version.
+
+Devise now uses a partial under "devise/shared/error_messages" to display
+error messages by default, and make them easier to customize. Update your
+views changing calls from:
+
+    <%= devise_error_messages! %>
+
+to:
+
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+To start customizing how errors are displayed, you can copy the partial
+from devise to your `app/views` folder. Alternatively, you can run
+`rails g devise:views` which will copy all of them again to your app.
+ (called from block in _app_views_devise_sessions_new_html_erb___2010511578172230536_70193797180360 at /Users/yukiti/Like_instagram/app/views/devise/sessions/new.html.erb:8)
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 32.2ms | Allocations: 1373)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 101ms (Views: 58.3ms | ActiveRecord: 2.6ms | Allocations: 16847)
+
+
