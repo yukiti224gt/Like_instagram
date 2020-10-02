@@ -8482,3 +8482,92 @@ Processing by Devise::SessionsController#new as HTML
 Completed 200 OK in 18ms (Views: 16.3ms | ActiveRecord: 0.0ms | Allocations: 8052)
 
 
+Started GET "/users/sign_up" for ::1 at 2020-10-02 14:47:25 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.7ms | Allocations: 786)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.4ms | Allocations: 93)
+Completed 200 OK in 19ms (Views: 17.8ms | ActiveRecord: 0.0ms | Allocations: 10336)
+
+
+Started POST "/users" for ::1 at 2020-10-02 14:49:33 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"aHLoc6oYky0vj37a/asqEw7apeYqP7T1CoziEoB4tvTHQ5IC6ZWtDjeEtmCY0qsiq5SYt9KpLWZr1Aqv5MlxsA==", "user"=>{"email"=>"yuki123", "name"=>"ゆうき"}, "commit"=>"登録する"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yuki123"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 496)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 18ms (Views: 9.0ms | ActiveRecord: 0.3ms | Allocations: 15284)
+
+
+Started GET "/users/sign_in" for ::1 at 2020-10-02 14:49:36 +0900
+Processing by Devise::SessionsController#new as HTML
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 611)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.1ms | Allocations: 6)
+Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.0ms | Allocations: 9066)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-10-02 14:49:42 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"p+rvoOs9dTdUSTue+esviSJbWWGtsnGySi8mAYP/2jRYTcgYH7pCFcKzBXosP+osaQIm9iF88TGLhkg0ZxfkKw==", "user"=>{"email"=>"yuki123tphrn"}, "commit"=>"サインインする"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 448)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"p+rvoOs9dTdUSTue+esviSJbWWGtsnGySi8mAYP/2jRYTcgYH7pCFcKzBXosP+osaQIm9iF88TGLhkg0ZxfkKw==", "user"=>{"email"=>"yuki123tphrn"}, "commit"=>"サインインする"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 361)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.0ms | Allocations: 8036)
+
+
+Started POST "/users/sign_in" for ::1 at 2020-10-02 14:50:05 +0900
+Processing by Devise::SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"zh0zCL2Jv6BIZY3YLt2QSXyoGW7yNNm/uMS9FNCN2TzjSoCasUyMRvzxHa3WuU//ivd91tprlE6YjcrquH9VPw==", "user"=>{"email"=>"yuki123tp"}, "commit"=>"サインインする"}
+Completed 401 Unauthorized in 1ms (ActiveRecord: 0.0ms | Allocations: 411)
+
+
+Processing by Devise::SessionsController#new as HTML
+  Parameters: {"authenticity_token"=>"zh0zCL2Jv6BIZY3YLt2QSXyoGW7yNNm/uMS9FNCN2TzjSoCasUyMRvzxHa3WuU//ivd91tprlE6YjcrquH9VPw==", "user"=>{"email"=>"yuki123tp"}, "commit"=>"サインインする"}
+  Rendering devise/sessions/new.html.erb within layouts/application
+  Rendered devise/sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 361)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 11ms (Views: 10.4ms | ActiveRecord: 0.0ms | Allocations: 8007)
+
+
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 2]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 3]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ? OFFSET ?[0m  [["LIMIT", 1], ["OFFSET", 4]]
+Started GET "/users/sign_up" for ::1 at 2020-10-02 14:52:40 +0900
+Processing by Devise::RegistrationsController#new as HTML
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 497)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.0ms | Allocations: 8244)
+
+
+Started POST "/users" for ::1 at 2020-10-02 14:54:15 +0900
+Processing by Devise::RegistrationsController#create as HTML
+  Parameters: {"authenticity_token"=>"OdmgrRzFMREseHqXxSrmPZt7l5Ak114dgrWsx9a22f6W6NrcX0gPMjRzsi2gU2cMPjWqwdxBx47j7UR6sgceug==", "user"=>{"email"=>"yuki123tphrn", "name"=>"yuukiti"}, "commit"=>"登録する"}
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = ? LIMIT ?[0m  [["email", "yuki123tphrn"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  Rendering devise/registrations/new.html.erb within layouts/application
+  Rendered devise/registrations/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 483)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 6)
+Completed 200 OK in 18ms (Views: 12.0ms | ActiveRecord: 0.3ms | Allocations: 14194)
+
+
