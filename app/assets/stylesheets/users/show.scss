@@ -7,3 +7,27 @@
   width: 120px;
   height: 120px;
 }
+
+.edit-profile-btn{
+  margin: 15px 0 0 15px;
+  font-weight: bold;
+  height: 25px;
+  line-height: 25px;
+  padding: 0 26%;
+  border-color: #dbdbdb;
+  font-size: 14px;
+}
+
+.setting{
+  background-image: image-url("parts4.png");
+  background-repeat: no-repeat;
+  height: 24px;
+  width: 24px;
+  background-color: transparent;
+  margin: 18px 0 0 10px;
+  background-size: 22px!important;
+  border: none;
+  &:hover{
+    cursor: pointer;
+  }
+}
