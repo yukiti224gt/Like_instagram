@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # pagesコントローラーのhomeアクションのルーティングを追加する
   root 'pages#home'
 
-  get "/users/id",to: "users#show", as: "user"
+  get "/users/:id",to: "users#show", as: "user"
   # asオプションを用いるとルーティングへ名前を付けれる。今回userという名前をつけたためuser_pathメソッドが生成される。
   
 
