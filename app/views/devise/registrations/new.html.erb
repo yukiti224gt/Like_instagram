@@ -17,12 +17,12 @@
         </div>
 
          <div class="form-group">
-          <%= f.password_field :email, autofocus: "off", placeholder: "パスワード",
+          <%= f.password_field :password, autofocus: "off", placeholder: "パスワード",
           class: "form-control"%>
         </div>
 
          <div class="form-group">
-          <%= f.password_field :email, autofocus: true, placeholder: "パスワードの確認",
+          <%= f.password_field :password, autofocus: true, placeholder: "パスワードの確認",
           class: "form-control"%>
         </div>
 
@@ -35,6 +35,7 @@
         <p class = "devise-link">
           アカウントをお持ちですか？
           <%= link_to "サインインする", new_user_session_path%>
+        </p>
     </div>
   </div>  
 </div>
