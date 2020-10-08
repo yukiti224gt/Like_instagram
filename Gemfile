@@ -58,3 +58,5 @@ gem 'bootstrap', '~> 5.0.0.alpha1'
 gem 'jquery-rails'
 
 gem "devise"
+
+gem 'carrierwave', '~> 1.0'
