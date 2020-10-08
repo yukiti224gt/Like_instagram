@@ -9,8 +9,24 @@
         </div>
         
         <div class="form-group">
-          
+          <%= f.label :email, "メールアドレス" %>
+          <%= f.text_field :email, autofocus: true, class: "form-control "%>  
         </div>
+
+
+        <div class="form-group">
+          <%= f.label :password, "パスワード" %>
+          <%= f.text_field :password, autofocus: true, class: "form-control "%>  
+        </div>
+
+
+        <div class="form-group">
+          <%= f.label :password_confirmation, "パスワードの確認" %>
+          <%= f.text_field :password_confirmation, autofocus: true, class: "form-control "%>  
+        </div>
+
+        <%= f.submit "変更する", class: "btn btn-primary"%>
+        <% end %>
       </div>
     </div>
   </div>
