@@ -5,3 +5,4 @@ class RegistrationsController < Devise::RegistrationsController
   def update_resource(resouce, params)
     resouce.update_without_current_password(params)
   end
+end
