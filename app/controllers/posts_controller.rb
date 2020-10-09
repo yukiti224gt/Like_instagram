@@ -22,4 +22,5 @@ class PostsController < ApplicationController
       params.require(:post).permit(:caption,photos_attributes: [:image])
       .merge(user_id: current_user.id)
     end
+    # paramsとは送られたリクエスト情報をひとまとめにしたもの
 end
