@@ -4,7 +4,8 @@ class PostsController < ApplicationController
     @post = Post.new
     @post.photos.build
     # new,buildはどちらもインスタンスを作るメソッドのこと
-
+  end
+  
   def create
     @post = Post.new(post_params)
     if @post.photos.present?

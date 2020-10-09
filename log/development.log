@@ -16623,3 +16623,182 @@ Processing by PagesController#home as HTML
 Completed 200 OK in 12ms (Views: 11.6ms | ActiveRecord: 0.2ms | Allocations: 8931)
 
 
+Started GET "/posts/new" for ::1 at 2020-10-09 13:33:35 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/Users/yukiti/Like_instagram/app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+Started GET "/posts/new" for ::1 at 2020-10-09 13:34:26 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/Users/yukiti/Like_instagram/app/controllers/posts_controller.rb:15: else without rescue is useless
+    else
+    ^~~~):
+  
+app/controllers/posts_controller.rb:15: else without rescue is useless
+app/controllers/posts_controller.rb:15: else without rescue is useless
+app/controllers/posts_controller.rb:15: else without rescue is useless
+Started GET "/posts/new" for ::1 at 2020-10-09 13:34:27 +0900
+  
+SyntaxError (/Users/yukiti/Like_instagram/app/controllers/posts_controller.rb:15: else without rescue is useless
+    else
+    ^~~~):
+  
+app/controllers/posts_controller.rb:15: else without rescue is useless
+app/controllers/posts_controller.rb:15: else without rescue is useless
+app/controllers/posts_controller.rb:15: else without rescue is useless
+Started GET "/posts/new" for ::1 at 2020-10-09 13:34:36 +0900
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#new as HTML
+Completed 500 Internal Server Error in 34ms (ActiveRecord: 0.7ms | Allocations: 12207)
+
+
+  
+NameError (uninitialized constant #<Class:0x00007fbe059b8e10>::ImageUploader):
+  
+app/models/photo.rb:7:in `<class:Photo>'
+app/models/photo.rb:1:in `<main>'
+app/controllers/posts_controller.rb:5:in `new'
+Started GET "/posts/new" for ::1 at 2020-10-09 13:34:43 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/Users/yukiti/Like_instagram/app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+Started GET "/posts/new" for ::1 at 2020-10-09 13:54:22 +0900
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+SyntaxError (/Users/yukiti/Like_instagram/app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+Started GET "/posts/new" for ::1 at 2020-10-09 13:54:25 +0900
+  
+SyntaxError (/Users/yukiti/Like_instagram/app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+Started GET "/posts/new" for ::1 at 2020-10-09 13:55:58 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  
+SyntaxError (/Users/yukiti/Like_instagram/app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+app/controllers/posts_controller.rb:26: syntax error, unexpected end-of-input, expecting end
+Started GET "/posts/new" for ::1 at 2020-10-09 13:57:30 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#new as HTML
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.5ms | Allocations: 8812)
+
+
+  
+LoadError (cannot load such file -- mini_magick (You may need to install the mini_magick gem)):
+  
+app/uploaders/image_uploader.rb:4:in `include'
+app/uploaders/image_uploader.rb:4:in `<class:ImageUploader>'
+app/uploaders/image_uploader.rb:1:in `<main>'
+app/models/photo.rb:7:in `<class:Photo>'
+app/models/photo.rb:1:in `<main>'
+app/controllers/posts_controller.rb:5:in `new'
+Started GET "/posts/new" for ::1 at 2020-10-09 13:57:32 +0900
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1061)
+Completed 500 Internal Server Error in 22ms (ActiveRecord: 0.5ms | Allocations: 10193)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_with model: @post do |f|%>
+  <%= f.label :caption %>
+  <%= f.text_field :caption%>
+  <%= f.fields_for :photos do |i|%>
+    <%= i.file_filed :image %>
+  <% end %>
+  <%= f.submit "投稿", class: "btn btn-primary"%>
+
+):
+1:    <%= form_with model: @post do |f|%>
+2:      <%= f.label :caption %>
+3:      <%= f.text_field :caption%>
+4:      <%= f.fields_for :photos do |i|%>
+5:        <%= i.file_filed :image %>
+6:      <% end %>
+7:      <%= f.submit "投稿", class: "btn btn-primary"%>
+  
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+Started GET "/posts/new" for ::1 at 2020-10-09 13:57:34 +0900
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1111)
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1758)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_with model: @post do |f|%>
+  <%= f.label :caption %>
+  <%= f.text_field :caption%>
+  <%= f.fields_for :photos do |i|%>
+    <%= i.file_filed :image %>
+  <% end %>
+  <%= f.submit "投稿", class: "btn btn-primary"%>
+
+):
+1:    <%= form_with model: @post do |f|%>
+2:      <%= f.label :caption %>
+3:      <%= f.text_field :caption%>
+4:      <%= f.fields_for :photos do |i|%>
+5:        <%= i.file_filed :image %>
+6:      <% end %>
+7:      <%= f.submit "投稿", class: "btn btn-primary"%>
+  
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+Started GET "/posts/new" for ::1 at 2020-10-09 13:57:37 +0900
+Processing by PostsController#new as HTML
+  Rendering posts/new.html.erb within layouts/application
+  Rendered posts/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1111)
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms | Allocations: 1758)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_with model: @post do |f|%>
+  <%= f.label :caption %>
+  <%= f.text_field :caption%>
+  <%= f.fields_for :photos do |i|%>
+    <%= i.file_filed :image %>
+  <% end %>
+  <%= f.submit "投稿", class: "btn btn-primary"%>
+
+):
+1:    <%= form_with model: @post do |f|%>
+2:      <%= f.label :caption %>
+3:      <%= f.text_field :caption%>
+4:      <%= f.fields_for :photos do |i|%>
+5:        <%= i.file_filed :image %>
+6:      <% end %>
+7:      <%= f.submit "投稿", class: "btn btn-primary"%>
+  
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
+app/views/posts/new.html.erb:10: syntax error, unexpected end-of-input, expecting end
