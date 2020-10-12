@@ -1,8 +1,13 @@
-<%= form_with model: @post do |f|%>
-  <%= f.label :caption %>
-  <%= f.text_field :caption %>
-  <%= f.fields_for :photos do |i| %>
-    <%= i.file_field :image %>
-  <% end %>
-  <%= f.submit "投稿", class: "btn btn-primary"%>
-<% end %>
+<div class="card-header">
+  投稿画面
+</div>
+<div class="card-body">
+  <%= form_with model: @post, class: "upload-images p-0 border-0" do |f| %>
+    <%# <div class="form-group row mt-2">
+     %>
+      <div class="col-auto pr-0">  
+        <%= image_tag avatar_url(current_user), class: "post-profile-icon"%>
+      </div>
+      
+        <% end %>
+</div>
