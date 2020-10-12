@@ -17987,3 +17987,291 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 24ms (Views: 20.7ms | ActiveRecord: 0.8ms | Allocations: 17553)
 
 
+Started GET "/posts" for ::1 at 2020-10-12 14:57:42 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:24
+  Rendered posts/index.html.erb within layouts/application (Duration: 7.8ms | Allocations: 4596)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.7ms | Allocations: 261)
+  Rendered partial/_footer.html.erb (Duration: 0.3ms | Allocations: 92)
+Completed 200 OK in 26ms (Views: 21.9ms | ActiveRecord: 0.8ms | Allocations: 15823)
+
+
+Started GET "/posts" for ::1 at 2020-10-12 14:57:47 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  Rendered posts/index.html.erb within layouts/application (Duration: 9.3ms | Allocations: 6319)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.5ms | Allocations: 261)
+  Rendered partial/_footer.html.erb (Duration: 0.3ms | Allocations: 92)
+Completed 200 OK in 27ms (Views: 22.6ms | ActiveRecord: 0.8ms | Allocations: 17549)
+
+
+Started GET "/posts" for ::1 at 2020-10-12 15:00:10 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.4ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:32
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:32
+  Rendered posts/index.html.erb within layouts/application (Duration: 21.7ms | Allocations: 6458)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.4ms | Allocations: 261)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 38ms (Views: 33.8ms | ActiveRecord: 1.1ms | Allocations: 17690)
+
+
+Started GET "/posts" for ::1 at 2020-10-12 15:00:11 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:32
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:32
+  Rendered posts/index.html.erb within layouts/application (Duration: 9.0ms | Allocations: 6099)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 90)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 23ms (Views: 19.2ms | ActiveRecord: 0.9ms | Allocations: 15588)
+
+
+Started GET "/posts" for ::1 at 2020-10-12 15:02:25 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:33
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.9ms | Allocations: 6453)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.5ms | Allocations: 261)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 27ms (Views: 22.9ms | ActiveRecord: 0.8ms | Allocations: 17683)
+
+
+Started GET "/posts" for ::1 at 2020-10-12 15:02:26 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:33
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.8ms | Allocations: 6099)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 90)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 1.2ms | Allocations: 15592)
+
+
+Started GET "/posts" for ::1 at 2020-10-12 15:02:28 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:33
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  [1m[36mCACHE Photo Load (0.0ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:33
+  Rendered posts/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 6093)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 89)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 23ms (Views: 19.4ms | ActiveRecord: 0.9ms | Allocations: 15589)
+
+
+Started GET "/posts" for ::1 at 2020-10-12 15:12:42 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 21.7ms | Allocations: 6555)
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 0.8ms | Allocations: 9287)
+
+
+  
+ActionView::Template::Error (undefined method `name　' for #<User:0x00007fde451d0d78>
+Did you mean?  name
+               name=
+               name?):
+    23:           <div><strong>「いいね！」10件</strong></div>
+    24: 
+    25:           <div>
+    26:             <span><strong><%= post.user.name　%><strong></span>
+    27:             <span><%= post.caption %></span>
+    28:             <%= link_to time_ago_in_words(post.created_at).upcase + "前" + "#", class: "post-time no-text-decoration"%>
+    29:             <hr>
+  
+app/views/posts/index.html.erb:26
+app/views/posts/index.html.erb:1
+Started GET "/posts" for ::1 at 2020-10-12 15:13:02 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 19.2ms | Allocations: 6440)
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 0.6ms | Allocations: 9151)
+
+
+  
+ActionView::Template::Error (undefined method `name　' for #<User:0x00007fde43b71708>
+Did you mean?  name
+               name=
+               name?):
+    23:           <div><strong>「いいね！」10件</strong></div>
+    24: 
+    25:           <div>
+    26:             <span><strong><%= post.user.name　%></strong></span>
+    27:             <span><%= post.caption %></span>
+    28:             <%= link_to time_ago_in_words(post.created_at).upcase + "前" + "#", class: "post-time no-text-decoration"%>
+    29:             <hr>
+  
+app/views/posts/index.html.erb:26
+app/views/posts/index.html.erb:1
+Started GET "/posts" for ::1 at 2020-10-12 15:13:03 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 19.5ms | Allocations: 6019)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 0.7ms | Allocations: 7887)
+
+
+  
+ActionView::Template::Error (undefined method `name　' for #<User:0x00007fde45051998>
+Did you mean?  name
+               name=
+               name?):
+    23:           <div><strong>「いいね！」10件</strong></div>
+    24: 
+    25:           <div>
+    26:             <span><strong><%= post.user.name　%></strong></span>
+    27:             <span><%= post.caption %></span>
+    28:             <%= link_to time_ago_in_words(post.created_at).upcase + "前" + "#", class: "post-time no-text-decoration"%>
+    29:             <hr>
+  
+app/views/posts/index.html.erb:26
+app/views/posts/index.html.erb:1
+Started GET "/posts" for ::1 at 2020-10-12 15:14:02 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 2], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:16
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.1ms | Allocations: 6408)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.7ms | Allocations: 9117)
+
+
+  
+ActionView::Template::Error (undefined method `name　' for #<User:0x00007fde48991f28>
+Did you mean?  name
+               name=
+               name?):
+    23:           <div><strong>「いいね！」10件</strong></div>
+    24: 
+    25:           <div>
+    26:             <span><strong><%= post.user.name　%></strong></span>
+    27:             <span><%= post.caption %></span>
+    28:             <%= link_to time_ago_in_words(post.created_at).upcase + "前" + "#", class: "post-time no-text-decoration"%>
+    29:             <hr>
+  
+app/views/posts/index.html.erb:26
+app/views/posts/index.html.erb:1
