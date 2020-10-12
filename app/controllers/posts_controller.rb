@@ -21,6 +21,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def index
+    @posts = Post.limit(10).order("created_at DESC")
+  end
+  # 投稿のレコードは最大10個,降順に出力
+
   private
     def post_params
       params.require(:post).permit(:caption,photos_attributes: [:image])
