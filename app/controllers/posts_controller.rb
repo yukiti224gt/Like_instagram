@@ -26,6 +26,9 @@ class PostsController < ApplicationController
   end
   # 投稿のレコードは最大10個,降順に出力
 
+  def show
+    @post = Post.find_by(id: params[:id])
+  end
   private
     def post_params
       params.require(:post).permit(:caption,photos_attributes: [:image])
