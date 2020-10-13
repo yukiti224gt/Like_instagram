@@ -23405,3 +23405,67 @@ ActionView::Template::Error (undefined method `photos' for nil:NilClass):
     8:       <div class="col-md-4">
   
 app/views/posts/show.html.erb:5
+Started GET "/posts/3" for ::1 at 2020-10-13 12:49:44 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1273)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 3658)
+
+
+  
+ActionView::Template::Error (undefined method `photos' for nil:NilClass):
+    2:     <div class="row post-wrap">
+    3:       <div class="col-md-8">
+    4:         <div class="card-left">
+    5:           <%= image_tag @post.photos.first.image.url(:medium), class: "card-img-top"%>
+    6:         </div>
+    7:       </div>
+    8:       <div class="col-md-4">
+  
+app/views/posts/show.html.erb:5
+Started GET "/posts/3" for ::1 at 2020-10-13 12:57:38 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1273)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 3702)
+
+
+  
+ActionView::Template::Error (undefined method `photos' for nil:NilClass):
+    2:     <div class="row post-wrap">
+    3:       <div class="col-md-8">
+    4:         <div class="card-left">
+    5:           <%= image_tag @post.photos.first.image.url(:medium), class: "card-img-top"%>
+    6:         </div>
+    7:       </div>
+    8:       <div class="col-md-4">
+  
+app/views/posts/show.html.erb:5
+Started GET "/posts/3" for ::1 at 2020-10-13 14:43:24 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 3], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  Rendered posts/show.html.erb within layouts/application (Duration: 13.6ms | Allocations: 8165)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 101)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 53ms (Views: 24.2ms | ActiveRecord: 0.9ms | Allocations: 29649)
+
+
