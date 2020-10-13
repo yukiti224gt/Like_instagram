@@ -1,0 +1,2 @@
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいねを取り消すN", post_likes_path(@post), method: :POST, emote: true, class: "love hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
