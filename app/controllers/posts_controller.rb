@@ -29,6 +29,16 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id: params[:id])
   end
+
+  def destroy
+    @post = Post.find_by(id: params[:id])
+    if @post.user == current_user
+      flash[:notice] = "投稿が削除されました" if @post.destroy
+    else
+      flash[:alert] = "投稿の削除に失敗しました"  
+    end
+    redirect_to root_path
+  end
   
   private
     def post_params
