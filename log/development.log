@@ -25949,3 +25949,2134 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 25ms (Views: 19.9ms | ActiveRecord: 0.9ms | Allocations: 12949)
 
 
+Started GET "/" for ::1 at 2020-10-14 02:23:32 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  Rendered posts/index.html.erb within layouts/application (Duration: 8.2ms | Allocations: 4917)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.2ms | Allocations: 7649)
+
+
+  
+ActionView::Template::Error (No route matches {:action=>"destroy", :controller=>"likes", :post_id=>#<Post id: 5, caption: "test2", user_id: 1, created_at: "2020-10-13 09:02:26", updated_at: "2020-10-13 09:02:26">}, missing required keys: [:id]):
+    32:             <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+    33: 
+    34:             <% else %>
+    35:             <%= link_to "いいね", post_like_path(post), method: :POST, remote: true, class: "love hide-text"%>
+    36:             <% end %>
+    37:           </div>
+    38:           <%= link_to "", "#", class: "comment"%>
+  
+app/views/posts/index.html.erb:35
+app/views/posts/index.html.erb:1
+Started GET "/" for ::1 at 2020-10-14 02:24:00 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.9ms | Allocations: 1240)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.5ms | Allocations: 922)
+  Rendered posts/index.html.erb within layouts/application (Duration: 16.8ms | Allocations: 9194)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.5ms | Allocations: 267)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 34ms (Views: 29.1ms | ActiveRecord: 1.5ms | Allocations: 20842)
+
+
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:03 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 5], ["user_id", 1], ["created_at", "2020-10-13 17:24:03.794263"], ["updated_at", "2020-10-13 17:24:03.794263"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.9ms | Allocations: 1037)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 2.5ms | Allocations: 13258)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:04 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.7ms | Allocations: 1029)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.7ms | Allocations: 7486)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:04 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.6ms | Allocations: 1077)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.6ms | Allocations: 7751)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:05 +0900
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.8ms | Allocations: 1616)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.6ms | Allocations: 9132)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:05 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.6ms | Allocations: 1029)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.5ms | Allocations: 7187)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:05 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.9ms | Allocations: 1086)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.5ms | Allocations: 7960)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:06 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.7ms | Allocations: 1279)
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 0.5ms | Allocations: 9474)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:06 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.8ms | Allocations: 1029)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.7ms | Allocations: 7187)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:07 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.7ms | Allocations: 1029)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.9ms | Allocations: 7187)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:07 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.9ms | Allocations: 1167)
+Completed 500 Internal Server Error in 8ms (ActiveRecord: 0.5ms | Allocations: 7654)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:07 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:24:08 +0900
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.7ms | Allocations: 1168)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.5ms | Allocations: 9362)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+  [1m[35m (0.0ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.5ms | Allocations: 1030)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 0.6ms | Allocations: 17505)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started GET "/" for ::1 at 2020-10-14 02:25:21 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.2ms | Allocations: 1818)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.0ms | Allocations: 922)
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.5ms | Allocations: 9637)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 98)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 30ms (Views: 25.6ms | ActiveRecord: 1.7ms | Allocations: 19540)
+
+
+Started DELETE "/posts/5/likes/1" for ::1 at 2020-10-14 02:25:24 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"5", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:15:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Destroy (0.4ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 1]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  Rendering likes/destroy.js.erb
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.6ms | Allocations: 921)
+  Rendered likes/destroy.js.erb (Duration: 2.9ms | Allocations: 1440)
+Completed 200 OK in 14ms (Views: 3.3ms | ActiveRecord: 2.3ms | Allocations: 6745)
+
+
+Started DELETE "/posts/5/likes/1" for ::1 at 2020-10-14 02:25:25 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"5", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 2944)
+
+
+  
+NoMethodError (undefined method `post' for nil:NilClass):
+  
+app/controllers/likes_controller.rb:15:in `destroy'
+Started DELETE "/posts/5/likes/1" for ::1 at 2020-10-14 02:25:26 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"5", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 2942)
+
+
+  
+NoMethodError (undefined method `post' for nil:NilClass):
+  
+app/controllers/likes_controller.rb:15:in `destroy'
+Started DELETE "/posts/5/likes/1" for ::1 at 2020-10-14 02:25:27 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"5", "id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.4ms | Allocations: 2942)
+
+
+  
+NoMethodError (undefined method `post' for nil:NilClass):
+  
+app/controllers/likes_controller.rb:15:in `destroy'
+Started POST "/posts/4/likes" for ::1 at 2020-10-14 02:25:30 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 4], ["user_id", 1], ["created_at", "2020-10-13 17:25:30.719712"], ["updated_at", "2020-10-13 17:25:30.719712"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.8ms | Allocations: 1094)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 2.0ms | Allocations: 7362)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started GET "/" for ::1 at 2020-10-14 02:25:32 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.1ms | Allocations: 924)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 1.9ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 13.5ms | Allocations: 9390)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 98)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 27ms (Views: 23.4ms | ActiveRecord: 1.2ms | Allocations: 19299)
+
+
+Started GET "/" for ::1 at 2020-10-14 02:25:34 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.0ms | Allocations: 924)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 4.2ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 17.5ms | Allocations: 9380)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 31ms (Views: 26.9ms | ActiveRecord: 1.5ms | Allocations: 19285)
+
+
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 02:25:37 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 5], ["user_id", 1], ["created_at", "2020-10-13 17:25:37.016934"], ["updated_at", "2020-10-13 17:25:37.016934"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.8ms | Allocations: 1094)
+Completed 500 Internal Server Error in 13ms (ActiveRecord: 2.2ms | Allocations: 7361)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started GET "/" for ::1 at 2020-10-14 02:25:38 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 1.8ms | Allocations: 1637)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.2ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 16.7ms | Allocations: 10642)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 32ms (Views: 26.9ms | ActiveRecord: 1.6ms | Allocations: 20545)
+
+
+Started DELETE "/posts/4/likes/2" for ::1 at 2020-10-14 02:26:11 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"4", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:15:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Destroy (0.4ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 2]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  Rendering likes/destroy.js.erb
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.3ms | Allocations: 921)
+  Rendered likes/destroy.js.erb (Duration: 1.8ms | Allocations: 1137)
+Completed 200 OK in 11ms (Views: 2.1ms | ActiveRecord: 2.1ms | Allocations: 6180)
+
+
+Started DELETE "/posts/4/likes/2" for ::1 at 2020-10-14 02:26:12 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"4", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 2949)
+
+
+  
+NoMethodError (undefined method `post' for nil:NilClass):
+  
+app/controllers/likes_controller.rb:15:in `destroy'
+Started DELETE "/posts/4/likes/2" for ::1 at 2020-10-14 02:26:12 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"4", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.4ms | Allocations: 2948)
+
+
+  
+NoMethodError (undefined method `post' for nil:NilClass):
+  
+app/controllers/likes_controller.rb:15:in `destroy'
+Started DELETE "/posts/4/likes/2" for ::1 at 2020-10-14 02:26:13 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"4", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.4ms | Allocations: 2946)
+
+
+  
+NoMethodError (undefined method `post' for nil:NilClass):
+  
+app/controllers/likes_controller.rb:15:in `destroy'
+Started DELETE "/posts/4/likes/2" for ::1 at 2020-10-14 02:26:13 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"4", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 0.3ms | Allocations: 2948)
+
+
+  
+NoMethodError (undefined method `post' for nil:NilClass):
+  
+app/controllers/likes_controller.rb:15:in `destroy'
+Started DELETE "/posts/4/likes/2" for ::1 at 2020-10-14 02:26:13 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"4", "id"=>"2"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.3ms | Allocations: 3345)
+
+
+  
+NoMethodError (undefined method `post' for nil:NilClass):
+  
+app/controllers/likes_controller.rb:15:in `destroy'
+Started DELETE "/posts/4/likes/2" for ::1 at 2020-10-14 02:26:13 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"4", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 2946)
+
+
+  
+NoMethodError (undefined method `post' for nil:NilClass):
+  
+app/controllers/likes_controller.rb:15:in `destroy'
+Started DELETE "/posts/4/likes/2" for ::1 at 2020-10-14 02:26:13 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"4", "id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.4ms | Allocations: 2946)
+
+
+  
+NoMethodError (undefined method `post' for nil:NilClass):
+  
+app/controllers/likes_controller.rb:15:in `destroy'
+Started GET "/" for ::1 at 2020-10-14 02:26:14 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 3.1ms | Allocations: 1652)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.7ms | Allocations: 922)
+  Rendered posts/index.html.erb within layouts/application (Duration: 33.8ms | Allocations: 9452)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.3ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.1ms | Allocations: 5)
+Completed 200 OK in 49ms (Views: 44.0ms | ActiveRecord: 2.0ms | Allocations: 19362)
+
+
+Started GET "/" for ::1 at 2020-10-14 02:26:23 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.0ms | Allocations: 1637)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.6ms | Allocations: 922)
+  Rendered posts/index.html.erb within layouts/application (Duration: 14.5ms | Allocations: 9380)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 28ms (Views: 24.3ms | ActiveRecord: 1.3ms | Allocations: 19285)
+
+
+Started DELETE "/posts/5/likes/3" for ::1 at 2020-10-14 02:26:24 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"5", "id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:15:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Destroy (0.4ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 3]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[35m (0.9ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  Rendering likes/destroy.js.erb
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.4ms | Allocations: 921)
+  Rendered likes/destroy.js.erb (Duration: 2.0ms | Allocations: 1137)
+Completed 200 OK in 11ms (Views: 2.3ms | ActiveRecord: 2.0ms | Allocations: 6175)
+
+
+Started GET "/" for ::1 at 2020-10-14 02:26:25 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.9ms | Allocations: 924)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.5ms | Allocations: 922)
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.1ms | Allocations: 8118)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 28ms (Views: 24.1ms | ActiveRecord: 1.6ms | Allocations: 18034)
+
+
+Started GET "/" for ::1 at 2020-10-14 02:27:40 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.1ms | Allocations: 924)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.4ms | Allocations: 922)
+  Rendered posts/index.html.erb within layouts/application (Duration: 12.2ms | Allocations: 8118)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 27ms (Views: 23.2ms | ActiveRecord: 1.2ms | Allocations: 18030)
+
+
+Started GET "/" for ::1 at 2020-10-14 09:21:57 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.8ms | Allocations: 939)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 2.1ms | Allocations: 922)
+  Rendered posts/index.html.erb within layouts/application (Duration: 29.0ms | Allocations: 8189)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.4ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.1ms | Allocations: 5)
+Completed 200 OK in 69ms (Views: 58.4ms | ActiveRecord: 2.5ms | Allocations: 18127)
+
+
+Started GET "/" for ::1 at 2020-10-14 09:22:19 +0900
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 12.2ms | Allocations: 1334)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 2.1ms | Allocations: 1066)
+  Rendered posts/index.html.erb within layouts/application (Duration: 70.5ms | Allocations: 26128)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from process at /Library/Ruby/Gems/2.6.0/gems/autoprefixer-rails-9.8.6.3/lib/autoprefixer-rails/processor.rb:36)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 1.0ms | Allocations: 283)
+  Rendered partial/_footer.html.erb (Duration: 0.6ms | Allocations: 95)
+Completed 200 OK in 1221ms (Views: 1186.4ms | ActiveRecord: 3.9ms | Allocations: 88390)
+
+
+Started POST "/posts/4/likes" for ::1 at 2020-10-14 09:22:23 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 4], ["user_id", 1], ["created_at", "2020-10-14 00:22:23.597249"], ["updated_at", "2020-10-14 00:22:23.597249"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 2.1ms | Allocations: 1352)
+Completed 500 Internal Server Error in 24ms (ActiveRecord: 2.6ms | Allocations: 13816)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started GET "/" for ::1 at 2020-10-14 09:22:25 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.1ms | Allocations: 925)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.1ms | Allocations: 1801)
+  Rendered posts/index.html.erb within layouts/application (Duration: 13.9ms | Allocations: 9602)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 98)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 28ms (Views: 23.2ms | ActiveRecord: 1.4ms | Allocations: 19693)
+
+
+Started GET "/" for ::1 at 2020-10-14 09:26:15 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.7ms | Allocations: 1226)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.7ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 16.7ms | Allocations: 10453)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.5ms | Allocations: 267)
+  Rendered partial/_footer.html.erb (Duration: 0.3ms | Allocations: 92)
+Completed 200 OK in 34ms (Views: 29.3ms | ActiveRecord: 1.3ms | Allocations: 22220)
+
+
+Started GET "/" for ::1 at 2020-10-14 09:26:31 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.7ms | Allocations: 1225)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.3ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 16.1ms | Allocations: 10440)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.4ms | Allocations: 267)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 31ms (Views: 27.3ms | ActiveRecord: 1.3ms | Allocations: 22158)
+
+
+Started GET "/" for ::1 at 2020-10-14 09:26:48 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.7ms | Allocations: 1226)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.6ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 17.5ms | Allocations: 10445)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.6ms | Allocations: 272)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 44ms (Views: 39.9ms | ActiveRecord: 1.4ms | Allocations: 22176)
+
+
+Started GET "/" for ::1 at 2020-10-14 09:27:11 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.6ms | Allocations: 1226)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.6ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 16.8ms | Allocations: 10446)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.4ms | Allocations: 267)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 33ms (Views: 28.5ms | ActiveRecord: 1.3ms | Allocations: 22195)
+
+
+Started GET "/" for ::1 at 2020-10-14 09:57:01 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.9ms | Allocations: 1240)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.1ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 17.2ms | Allocations: 10511)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.5ms | Allocations: 267)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 33ms (Views: 29.0ms | ActiveRecord: 1.7ms | Allocations: 22264)
+
+
+Started GET "/posts/4" for ::1 at 2020-10-14 09:57:19 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  Rendered posts/show.html.erb within layouts/application (Duration: 334.6ms | Allocations: 203348)
+Completed 500 Internal Server Error in 340ms (ActiveRecord: 0.9ms | Allocations: 206004)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x00007fa152758af0>:0x00007fa156064e98>
+Did you mean?  @post):
+    37:             </div>
+    38:           </div>
+    39:           <div class="row parts">
+    40:             <div id="like-icon-post-<%= post.id.to_s %>">
+    41:               <% if post.liked_by(current_user).present? %>
+    42:               <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+    43: 
+  
+app/views/posts/show.html.erb:40
+Started GET "/" for ::1 at 2020-10-14 09:57:20 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.4ms | Allocations: 924)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 3.1ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 17.7ms | Allocations: 9382)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 98)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 32ms (Views: 28.7ms | ActiveRecord: 1.6ms | Allocations: 19372)
+
+
+Started GET "/posts/5" for ::1 at 2020-10-14 09:57:21 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  Rendered posts/show.html.erb within layouts/application (Duration: 297.7ms | Allocations: 202815)
+Completed 500 Internal Server Error in 313ms (ActiveRecord: 0.5ms | Allocations: 205208)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x00007fa152758af0>:0x00007fa1520f63b0>
+Did you mean?  @post):
+    37:             </div>
+    38:           </div>
+    39:           <div class="row parts">
+    40:             <div id="like-icon-post-<%= post.id.to_s %>">
+    41:               <% if post.liked_by(current_user).present? %>
+    42:               <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+    43: 
+  
+app/views/posts/show.html.erb:40
+Started GET "/posts/5" for ::1 at 2020-10-14 09:57:35 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  Rendered posts/show.html.erb within layouts/application (Duration: 281.6ms | Allocations: 203247)
+Completed 500 Internal Server Error in 288ms (ActiveRecord: 0.6ms | Allocations: 206480)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x00007fa155f56290>:0x00007fa1526c7820>
+Did you mean?  @post):
+    38:           </div>
+    39:           <div class="row parts">
+    40:             <div id="like-icon-post-<%= @post.id.to_s %>">
+    41:               <% if post.liked_by(current_user).present? %>
+    42:               <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+    43: 
+    44:               <% else %>
+  
+app/views/posts/show.html.erb:41
+Started GET "/posts/5" for ::1 at 2020-10-14 09:57:44 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  Rendered posts/show.html.erb within layouts/application (Duration: 318.6ms | Allocations: 203828)
+Completed 500 Internal Server Error in 325ms (ActiveRecord: 0.8ms | Allocations: 207061)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x00007fa1527e5978>:0x00007fa156b33f90>
+Did you mean?  @post):
+    42:               <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+    43: 
+    44:               <% else %>
+    45:               <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+    46:               <% end %>
+    47:             </div>
+    48:           </div>
+  
+app/views/posts/show.html.erb:45
+Started GET "/posts/5" for ::1 at 2020-10-14 09:58:17 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  Rendered posts/show.html.erb within layouts/application (Duration: 317.8ms | Allocations: 203827)
+Completed 500 Internal Server Error in 324ms (ActiveRecord: 0.7ms | Allocations: 207060)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x00007fa15e80d020>:0x00007fa156b8b678>
+Did you mean?  @post):
+    42:               <%= link_to "いいねを取り消す", post_like_path(@post.id, @post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+    43: 
+    44:               <% else %>
+    45:               <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+    46:               <% end %>
+    47:             </div>
+    48:           </div>
+  
+app/views/posts/show.html.erb:45
+Started GET "/" for ::1 at 2020-10-14 09:58:45 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.9ms | Allocations: 1225)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.4ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 16.8ms | Allocations: 10443)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.5ms | Allocations: 272)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 42ms (Views: 37.4ms | ActiveRecord: 1.4ms | Allocations: 22189)
+
+
+Started GET "/posts/5" for ::1 at 2020-10-14 09:58:49 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  Rendered posts/show.html.erb within layouts/application (Duration: 6.6ms | Allocations: 3113)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 21ms (Views: 16.8ms | ActiveRecord: 0.8ms | Allocations: 13773)
+
+
+Started GET "/posts/5" for ::1 at 2020-10-14 09:59:07 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 3113)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.6ms | Allocations: 268)
+  Rendered partial/_footer.html.erb (Duration: 0.3ms | Allocations: 92)
+Completed 200 OK in 24ms (Views: 19.0ms | ActiveRecord: 0.7ms | Allocations: 15361)
+
+
+Started GET "/" for ::1 at 2020-10-14 09:59:08 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.7ms | Allocations: 1225)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 4.4ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 22.5ms | Allocations: 10440)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.3ms | Allocations: 98)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 36ms (Views: 32.1ms | ActiveRecord: 1.8ms | Allocations: 20566)
+
+
+Started GET "/posts/5" for ::1 at 2020-10-14 09:59:10 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  Rendered posts/show.html.erb within layouts/application (Duration: 6.0ms | Allocations: 2628)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 97)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 20ms (Views: 16.2ms | ActiveRecord: 0.9ms | Allocations: 13136)
+
+
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 09:59:12 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 5], ["user_id", 1], ["created_at", "2020-10-14 00:59:12.176195"], ["updated_at", "2020-10-14 00:59:12.176195"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.7ms | Allocations: 1106)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 2.2ms | Allocations: 8839)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started GET "/posts/5" for ::1 at 2020-10-14 09:59:14 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.7ms | Allocations: 3173)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 97)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 20ms (Views: 15.5ms | ActiveRecord: 0.8ms | Allocations: 13680)
+
+
+Started DELETE "/posts/5/likes/5" for ::1 at 2020-10-14 09:59:16 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"5", "id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:15:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Destroy (0.4ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 5]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  Rendering likes/destroy.js.erb
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.6ms | Allocations: 921)
+  Rendered likes/destroy.js.erb (Duration: 4.0ms | Allocations: 1440)
+Completed 200 OK in 15ms (Views: 4.5ms | ActiveRecord: 2.3ms | Allocations: 6772)
+
+
+Started DELETE "/posts/5/likes/5" for ::1 at 2020-10-14 09:59:16 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"5", "id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.4ms | Allocations: 2946)
+
+
+  
+NoMethodError (undefined method `post' for nil:NilClass):
+  
+app/controllers/likes_controller.rb:15:in `destroy'
+Started GET "/posts/5" for ::1 at 2020-10-14 09:59:18 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  Rendered posts/show.html.erb within layouts/application (Duration: 26.3ms | Allocations: 2636)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 99)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 43ms (Views: 37.7ms | ActiveRecord: 1.0ms | Allocations: 13145)
+
+
+Started GET "/" for ::1 at 2020-10-14 09:59:19 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.4ms | Allocations: 924)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.8ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.9ms | Allocations: 9381)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 31ms (Views: 27.1ms | ActiveRecord: 1.5ms | Allocations: 19367)
+
+
+Started GET "/" for ::1 at 2020-10-14 10:00:28 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.6ms | Allocations: 1225)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.9ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 16.9ms | Allocations: 10444)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.4ms | Allocations: 267)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 34ms (Views: 29.8ms | ActiveRecord: 1.3ms | Allocations: 22173)
+
+
+Started GET "/posts/5" for ::1 at 2020-10-14 10:00:29 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  Rendered posts/show.html.erb within layouts/application (Duration: 316.1ms | Allocations: 203979)
+Completed 500 Internal Server Error in 333ms (ActiveRecord: 1.2ms | Allocations: 206509)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `post' for #<#<Class:0x00007fa156b00910>:0x00007fa155b2b328>
+Did you mean?  @post):
+    45:               <%= link_to "いいね", post_likes_path(@post), method: :POST, remote: true, class: "love hide-text"%>
+    46:               <% end %>
+    47:             </div>
+    48:             <div id="like-text-post-<%= post.id.to_s%>">
+    49:               <%= render "like_text", { likes: post.likes } %>
+    50:             </div>
+    51: 
+  
+app/views/posts/show.html.erb:48
+Started GET "/posts/5" for ::1 at 2020-10-14 10:00:42 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.8ms | Allocations: 1222)
+  Rendered posts/show.html.erb within layouts/application (Duration: 6.9ms | Allocations: 4642)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.5ms | Allocations: 267)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 24ms (Views: 19.8ms | ActiveRecord: 0.9ms | Allocations: 16893)
+
+
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 10:00:44 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 5], ["user_id", 1], ["created_at", "2020-10-14 01:00:44.211923"], ["updated_at", "2020-10-14 01:00:44.211923"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (1.0ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.8ms | Allocations: 1106)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 2.0ms | Allocations: 8815)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started GET "/posts/5" for ::1 at 2020-10-14 10:00:45 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 1.8ms | Allocations: 1631)
+  Rendered posts/show.html.erb within layouts/application (Duration: 7.4ms | Allocations: 4943)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 98)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 20ms (Views: 16.3ms | ActiveRecord: 0.9ms | Allocations: 15454)
+
+
+Started DELETE "/posts/5/likes/6" for ::1 at 2020-10-14 10:00:47 +0900
+Processing by LikesController#destroy as JS
+  Parameters: {"post_id"=>"5", "id"=>"6"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."id" = ? LIMIT ?[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:14:in `destroy'
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:15:in `destroy'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[36mLike Destroy (0.5ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = ?[0m  [["id", 6]]
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  [1m[35m (1.2ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:16:in `destroy'
+  Rendering likes/destroy.js.erb
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.6ms | Allocations: 921)
+  Rendered likes/destroy.js.erb (Duration: 3.0ms | Allocations: 1429)
+Completed 200 OK in 14ms (Views: 3.5ms | ActiveRecord: 2.5ms | Allocations: 6612)
+
+
+Started GET "/posts/5" for ::1 at 2020-10-14 10:00:48 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  Rendered posts/_like_text.html.erb (Duration: 1.0ms | Allocations: 921)
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.9ms | Allocations: 3687)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 98)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 19ms (Views: 15.2ms | ActiveRecord: 0.7ms | Allocations: 14203)
+
+
+Started POST "/posts/5/likes" for ::1 at 2020-10-14 10:00:49 +0900
+Processing by LikesController#create as JS
+  Parameters: {"post_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:7:in `create'
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[36mLike Create (0.4ms)[0m  [1m[32mINSERT INTO "likes" ("post_id", "user_id", "created_at", "updated_at") VALUES (?, ?, ?, ?)[0m  [["post_id", 5], ["user_id", 1], ["created_at", "2020-10-14 01:00:49.684866"], ["updated_at", "2020-10-14 01:00:49.684866"]]
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  [1m[35m (1.1ms)[0m  [1m[36mcommit transaction[0m
+  ↳ app/controllers/likes_controller.rb:8:in `create'
+  Rendering likes/create.js.erb
+  Rendered likes/create.js.erb (Duration: 0.7ms | Allocations: 1092)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 2.1ms | Allocations: 7367)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+(@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+$('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+
+):
+1:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= link_to "いいね", post_like_path
+2:    (@post.id, @like), method: :DELETE, remote: true, class: "loved hide-text"%>');
+3:    $('#like-icon-post-<%= @post.id.to_s%>').html('<%= j render "posts/like_text", { likes: @post.likes }%>');
+  
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+app/views/likes/create.js.erb:2: syntax error, unexpected tLABEL, expecting '='
+app/views/likes/create.js.erb:2: Can't assign to true
+Started GET "/posts/5" for ::1 at 2020-10-14 10:00:51 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:12:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 1.9ms | Allocations: 1631)
+  Rendered posts/show.html.erb within layouts/application (Duration: 7.3ms | Allocations: 4935)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 30ms (Views: 25.5ms | ActiveRecord: 1.0ms | Allocations: 15449)
+
+
