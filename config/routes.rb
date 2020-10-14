@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     resources :photos, only: %i(create)
 
     resources :likes, only: %i(create destroy)
+
+    resources :comments, only: %i(create destroy)
   end
   # asオプションを用いるとルーティングへ名前を付けれる。今回userという名前をつけたためuser_pathメソッドが生成される。
 end

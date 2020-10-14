@@ -28376,3 +28376,97 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 38ms (Views: 31.7ms | ActiveRecord: 1.3ms | Allocations: 15568)
 
 
+Started GET "/" for ::1 at 2020-10-14 10:23:30 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 3.5ms | Allocations: 2376)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 5.6ms | Allocations: 1635)
+  Rendered posts/index.html.erb within layouts/application (Duration: 46.2ms | Allocations: 24857)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.5ms | Allocations: 99)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 121ms (Views: 90.3ms | ActiveRecord: 2.0ms | Allocations: 44200)
+
+
+Started GET "/posts/5" for ::1 at 2020-10-14 10:23:32 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 5.3ms | Allocations: 1631)
+  Rendered posts/show.html.erb within layouts/application (Duration: 14.9ms | Allocations: 4934)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 46ms (Views: 39.7ms | ActiveRecord: 1.0ms | Allocations: 15566)
+
+
+Started GET "/posts/5" for ::1 at 2020-10-14 10:23:33 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.7ms | Allocations: 1631)
+  Rendered posts/show.html.erb within layouts/application (Duration: 26.3ms | Allocations: 4936)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 45ms (Views: 37.2ms | ActiveRecord: 0.8ms | Allocations: 15446)
+
+
