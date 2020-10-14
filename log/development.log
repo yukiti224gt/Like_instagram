@@ -29537,3 +29537,1870 @@ app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do 
 app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
 app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
 app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+Started GET "/" for ::1 at 2020-10-14 13:43:00 +0900
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2151)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 1.0ms | Allocations: 16575)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% @posts.each do |post|%>
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+        <strong>
+          <%= post.user.name %>
+        </strong>
+        <% end %>
+
+        <% if post.user_id == current_user.id %>
+        <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+        <div class="delete-post-icon">
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+
+      <%= link_to(post_path(post)) do %>
+      <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+      <% end %>
+
+      <div class="card-body">
+        <div class="row parts">
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+            <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+
+            <% else %>
+            <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+            <% end %>
+          </div>
+          <%= link_to "", "#", class: "comment"%>
+        </div>
+
+        <div id="like-text-post-<%= post.id.to_s%>">
+          <%= render "like_text", { likes: post.likes } %>
+        </div>
+
+        <div>
+          <span><%= post.caption %></span>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list',{ post: post} %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+          class: "light-color post-time no-text-decoration"%>
+
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+            <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", 
+            placeholeder: "コメント....", autocomplete: :off %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+):
+1:    <% @posts.each do |post|%>
+2:    <div class="col-md-8 col-md-2 mx-auto">
+3:      <div class="card-wrap">
+4:        <div class="card">
+5:          <div class="card-header align-items-center d-flex">
+6:            <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+7:            <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+8:            <% end %>
+9:            <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+10:            <strong>
+11:              <%= post.user.name %>
+12:            </strong>
+13:            <% end %>
+14:    
+15:            <% if post.user_id == current_user.id %>
+16:            <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+17:            <div class="delete-post-icon">
+18:            </div>
+19:            <% end %>
+20:            <% end %>
+21:    
+22:          </div>
+23:    
+24:          <%= link_to(post_path(post)) do %>
+25:          <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+26:          <% end %>
+27:    
+28:          <div class="card-body">
+29:            <div class="row parts">
+30:              <div id="like-icon-post-<%= post.id.to_s %>">
+31:                <% if post.liked_by(current_user).present? %>
+32:                <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+33:    
+34:                <% else %>
+35:                <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+36:                <% end %>
+37:              </div>
+38:              <%= link_to "", "#", class: "comment"%>
+39:            </div>
+40:    
+41:            <div id="like-text-post-<%= post.id.to_s%>">
+42:              <%= render "like_text", { likes: post.likes } %>
+43:            </div>
+44:    
+45:            <div>
+46:              <span><%= post.caption %></span>
+47:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+48:    
+49:              <div id="comment-post-<%= post.id.to_s %>">
+50:                <%= render 'comment_list',{ post: post} %>
+51:              </div>
+52:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+53:              class: "light-color post-time no-text-decoration"%>
+54:    
+55:              <hr>
+56:              <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+57:                <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+58:                <%= f.hidden_field :user_id, value: current_user.id %>
+59:                <%= f.hidden_field :post_id, value: post.id %>
+60:                <%= f.text_field :comment, class: "form-control comment-input border-0", 
+61:                placeholeder: "コメント....", autocomplete: :off %>
+62:                <% end %>
+63:              </div>
+64:            </div>
+65:          </div>
+66:        </div>
+67:      </div>
+68:    </div>
+69:    
+70:    <% end %>
+  
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+Started GET "/posts" for ::1 at 2020-10-14 13:43:07 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1640)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 3576)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% @posts.each do |post|%>
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+        <strong>
+          <%= post.user.name %>
+        </strong>
+        <% end %>
+
+        <% if post.user_id == current_user.id %>
+        <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+        <div class="delete-post-icon">
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+
+      <%= link_to(post_path(post)) do %>
+      <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+      <% end %>
+
+      <div class="card-body">
+        <div class="row parts">
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+            <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+
+            <% else %>
+            <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+            <% end %>
+          </div>
+          <%= link_to "", "#", class: "comment"%>
+        </div>
+
+        <div id="like-text-post-<%= post.id.to_s%>">
+          <%= render "like_text", { likes: post.likes } %>
+        </div>
+
+        <div>
+          <span><%= post.caption %></span>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list',{ post: post} %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+          class: "light-color post-time no-text-decoration"%>
+
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+            <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", 
+            placeholeder: "コメント....", autocomplete: :off %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+):
+1:    <% @posts.each do |post|%>
+2:    <div class="col-md-8 col-md-2 mx-auto">
+3:      <div class="card-wrap">
+4:        <div class="card">
+5:          <div class="card-header align-items-center d-flex">
+6:            <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+7:            <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+8:            <% end %>
+9:            <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+10:            <strong>
+11:              <%= post.user.name %>
+12:            </strong>
+13:            <% end %>
+14:    
+15:            <% if post.user_id == current_user.id %>
+16:            <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+17:            <div class="delete-post-icon">
+18:            </div>
+19:            <% end %>
+20:            <% end %>
+21:    
+22:          </div>
+23:    
+24:          <%= link_to(post_path(post)) do %>
+25:          <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+26:          <% end %>
+27:    
+28:          <div class="card-body">
+29:            <div class="row parts">
+30:              <div id="like-icon-post-<%= post.id.to_s %>">
+31:                <% if post.liked_by(current_user).present? %>
+32:                <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+33:    
+34:                <% else %>
+35:                <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+36:                <% end %>
+37:              </div>
+38:              <%= link_to "", "#", class: "comment"%>
+39:            </div>
+40:    
+41:            <div id="like-text-post-<%= post.id.to_s%>">
+42:              <%= render "like_text", { likes: post.likes } %>
+43:            </div>
+44:    
+45:            <div>
+46:              <span><%= post.caption %></span>
+47:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+48:    
+49:              <div id="comment-post-<%= post.id.to_s %>">
+50:                <%= render 'comment_list',{ post: post} %>
+51:              </div>
+52:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+53:              class: "light-color post-time no-text-decoration"%>
+54:    
+55:              <hr>
+56:              <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+57:                <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+58:                <%= f.hidden_field :user_id, value: current_user.id %>
+59:                <%= f.hidden_field :post_id, value: post.id %>
+60:                <%= f.text_field :comment, class: "form-control comment-input border-0", 
+61:                placeholeder: "コメント....", autocomplete: :off %>
+62:                <% end %>
+63:              </div>
+64:            </div>
+65:          </div>
+66:        </div>
+67:      </div>
+68:    </div>
+69:    
+70:    <% end %>
+  
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+Started GET "/posts" for ::1 at 2020-10-14 13:47:26 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1652)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 4388)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% @posts.each do |post|%>
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+        <strong>
+          <%= post.user.name %>
+        </strong>
+        <% end %>
+
+        <% if post.user_id == current_user.id %>
+        <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+        <div class="delete-post-icon">
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+
+      <%= link_to(post_path(post)) do %>
+      <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+      <% end %>
+
+      <div class="card-body">
+        <div class="row parts">
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+            <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+
+            <% else %>
+            <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+            <% end %>
+          </div>
+          <%= link_to "", "#", class: "comment"%>
+        </div>
+
+        <div id="like-text-post-<%= post.id.to_s%>">
+          <%= render "like_text", { likes: post.likes } %>
+        </div>
+
+        <div>
+          <span><%= post.caption %></span>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list',{ post: post} %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),class: "light-color post-time no-text-decoration"%>
+
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+            <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", 
+            placeholeder: "コメント....", autocomplete: :off %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+):
+1:    <% @posts.each do |post|%>
+2:    <div class="col-md-8 col-md-2 mx-auto">
+3:      <div class="card-wrap">
+4:        <div class="card">
+5:          <div class="card-header align-items-center d-flex">
+6:            <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+7:            <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+8:            <% end %>
+9:            <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+10:            <strong>
+11:              <%= post.user.name %>
+12:            </strong>
+13:            <% end %>
+14:    
+15:            <% if post.user_id == current_user.id %>
+16:            <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+17:            <div class="delete-post-icon">
+18:            </div>
+19:            <% end %>
+20:            <% end %>
+21:    
+22:          </div>
+23:    
+24:          <%= link_to(post_path(post)) do %>
+25:          <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+26:          <% end %>
+27:    
+28:          <div class="card-body">
+29:            <div class="row parts">
+30:              <div id="like-icon-post-<%= post.id.to_s %>">
+31:                <% if post.liked_by(current_user).present? %>
+32:                <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+33:    
+34:                <% else %>
+35:                <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+36:                <% end %>
+37:              </div>
+38:              <%= link_to "", "#", class: "comment"%>
+39:            </div>
+40:    
+41:            <div id="like-text-post-<%= post.id.to_s%>">
+42:              <%= render "like_text", { likes: post.likes } %>
+43:            </div>
+44:    
+45:            <div>
+46:              <span><%= post.caption %></span>
+47:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+48:    
+49:              <div id="comment-post-<%= post.id.to_s %>">
+50:                <%= render 'comment_list',{ post: post} %>
+51:              </div>
+52:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),class: "light-color post-time no-text-decoration"%>
+53:    
+54:              <hr>
+55:              <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+56:                <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+57:                <%= f.hidden_field :user_id, value: current_user.id %>
+58:                <%= f.hidden_field :post_id, value: post.id %>
+59:                <%= f.text_field :comment, class: "form-control comment-input border-0", 
+60:                placeholeder: "コメント....", autocomplete: :off %>
+61:                <% end %>
+62:              </div>
+63:            </div>
+64:          </div>
+65:        </div>
+66:      </div>
+67:    </div>
+68:    
+69:    <% end %>
+  
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+Started POST "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8/trace" for ::1 at 2020-10-14 13:47:36 +0900
+Started POST "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8/trace" for ::1 at 2020-10-14 13:47:37 +0900
+Started POST "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8/trace" for ::1 at 2020-10-14 13:47:37 +0900
+Started POST "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8/trace" for ::1 at 2020-10-14 13:47:38 +0900
+Started POST "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8/trace" for ::1 at 2020-10-14 13:47:38 +0900
+Started PUT "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8" for ::1 at 2020-10-14 13:48:38 +0900
+Started PUT "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8" for ::1 at 2020-10-14 13:48:39 +0900
+Started PUT "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8" for ::1 at 2020-10-14 13:48:41 +0900
+Started PUT "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8" for ::1 at 2020-10-14 13:48:42 +0900
+Started PUT "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8" for ::1 at 2020-10-14 13:48:44 +0900
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started PUT "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8" for ::1 at 2020-10-14 13:48:49 +0900
+Started PUT "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8" for ::1 at 2020-10-14 13:48:51 +0900
+Started PUT "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8" for ::1 at 2020-10-14 13:48:51 +0900
+  [1m[36mPhoto Load (1.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" ORDER BY "photos"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+Started POST "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8/trace" for ::1 at 2020-10-14 13:48:53 +0900
+Started POST "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8/trace" for ::1 at 2020-10-14 13:48:54 +0900
+Started POST "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8/trace" for ::1 at 2020-10-14 13:48:55 +0900
+Started POST "/__web_console/repl_sessions/7d763960cc71bc7002503257654af2d8/trace" for ::1 at 2020-10-14 13:48:56 +0900
+Started GET "/posts" for ::1 at 2020-10-14 13:57:22 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.0ms | Allocations: 1657)
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 4406)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% @posts.each do |post|%>
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+        <strong>
+          <%= post.user.name %>
+        </strong>
+        <% end %>
+
+        <% if post.user_id == current_user.id %>
+        <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+        <div class="delete-post-icon">
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+
+      <%= link_to(post_path(post)) do %>
+      <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+      <% end %>
+
+      <div class="card-body">
+        <div class="row parts">
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+            <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+
+            <% else %>
+            <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+            <% end %>
+          </div>
+          <%= link_to "", "#", class: "comment"%>
+        </div>
+
+        <div id="like-text-post-<%= post.id.to_s%>">
+          <%= render "like_text", { likes: post.likes } %>
+        </div>
+
+        <div>
+          <span><%= post.caption %></span>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list',{ post: post} %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),class: "light-color post-time no-text-decoration"%>
+
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+            <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", 
+            placeholeder: "コメント....", autocomplete: :off %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+):
+1:    <% @posts.each do |post|%>
+2:    <div class="col-md-8 col-md-2 mx-auto">
+3:      <div class="card-wrap">
+4:        <div class="card">
+5:          <div class="card-header align-items-center d-flex">
+6:            <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+7:            <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+8:            <% end %>
+9:            <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+10:            <strong>
+11:              <%= post.user.name %>
+12:            </strong>
+13:            <% end %>
+14:    
+15:            <% if post.user_id == current_user.id %>
+16:            <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+17:            <div class="delete-post-icon">
+18:            </div>
+19:            <% end %>
+20:            <% end %>
+21:    
+22:          </div>
+23:    
+24:          <%= link_to(post_path(post)) do %>
+25:          <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+26:          <% end %>
+27:    
+28:          <div class="card-body">
+29:            <div class="row parts">
+30:              <div id="like-icon-post-<%= post.id.to_s %>">
+31:                <% if post.liked_by(current_user).present? %>
+32:                <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+33:    
+34:                <% else %>
+35:                <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+36:                <% end %>
+37:              </div>
+38:              <%= link_to "", "#", class: "comment"%>
+39:            </div>
+40:    
+41:            <div id="like-text-post-<%= post.id.to_s%>">
+42:              <%= render "like_text", { likes: post.likes } %>
+43:            </div>
+44:    
+45:            <div>
+46:              <span><%= post.caption %></span>
+47:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+48:    
+49:              <div id="comment-post-<%= post.id.to_s %>">
+50:                <%= render 'comment_list',{ post: post} %>
+51:              </div>
+52:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),class: "light-color post-time no-text-decoration"%>
+53:    
+54:              <hr>
+55:              <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+56:                <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+57:                <%= f.hidden_field :user_id, value: current_user.id %>
+58:                <%= f.hidden_field :post_id, value: post.id %>
+59:                <%= f.text_field :comment, class: "form-control comment-input border-0", 
+60:                placeholeder: "コメント....", autocomplete: :off %>
+61:                <% end %>
+62:              </div>
+63:            </div>
+64:          </div>
+65:        </div>
+66:      </div>
+67:    </div>
+68:    
+69:    <% end %>
+  
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+Started GET "/posts" for ::1 at 2020-10-14 14:04:00 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1651)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 4399)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% @posts.each do |post|%>
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+        <strong>
+          <%= post.user.name %>
+        </strong>
+        <% end %>
+
+        <% if post.user_id == current_user.id %>
+        <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+        <div class="delete-post-icon">
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+
+      <%= link_to(post_path(post)) do %>
+      <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+      <% end %>
+
+      <div class="card-body">
+        <div class="row parts">
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+            <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+
+            <% else %>
+            <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+            <% end %>
+          </div>
+          <%= link_to "", "#", class: "comment"%>
+        </div>
+
+        <div id="like-text-post-<%= post.id.to_s%>">
+          <%= render "like_text", { likes: post.likes } %>
+        </div>
+
+        <div>
+          <span><%= post.caption %></span>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list',{ post: post } %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前",post_path (post),class: "light-color post-time no-text-decoration"%>
+
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+            <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", 
+            placeholeder: "コメント....", autocomplete: :off %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+):
+1:    <% @posts.each do |post|%>
+2:    <div class="col-md-8 col-md-2 mx-auto">
+3:      <div class="card-wrap">
+4:        <div class="card">
+5:          <div class="card-header align-items-center d-flex">
+6:            <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+7:            <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+8:            <% end %>
+9:            <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+10:            <strong>
+11:              <%= post.user.name %>
+12:            </strong>
+13:            <% end %>
+14:    
+15:            <% if post.user_id == current_user.id %>
+16:            <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+17:            <div class="delete-post-icon">
+18:            </div>
+19:            <% end %>
+20:            <% end %>
+21:    
+22:          </div>
+23:    
+24:          <%= link_to(post_path(post)) do %>
+25:          <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+26:          <% end %>
+27:    
+28:          <div class="card-body">
+29:            <div class="row parts">
+30:              <div id="like-icon-post-<%= post.id.to_s %>">
+31:                <% if post.liked_by(current_user).present? %>
+32:                <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+33:    
+34:                <% else %>
+35:                <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+36:                <% end %>
+37:              </div>
+38:              <%= link_to "", "#", class: "comment"%>
+39:            </div>
+40:    
+41:            <div id="like-text-post-<%= post.id.to_s%>">
+42:              <%= render "like_text", { likes: post.likes } %>
+43:            </div>
+44:    
+45:            <div>
+46:              <span><%= post.caption %></span>
+47:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+48:    
+49:              <div id="comment-post-<%= post.id.to_s %>">
+50:                <%= render 'comment_list',{ post: post } %>
+51:              </div>
+52:              <%= link_to time_ago_in_words(post.created_at).upcase + "前",post_path (post),class: "light-color post-time no-text-decoration"%>
+53:    
+54:              <hr>
+55:              <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+56:                <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+57:                <%= f.hidden_field :user_id, value: current_user.id %>
+58:                <%= f.hidden_field :post_id, value: post.id %>
+59:                <%= f.text_field :comment, class: "form-control comment-input border-0", 
+60:                placeholeder: "コメント....", autocomplete: :off %>
+61:                <% end %>
+62:              </div>
+63:            </div>
+64:          </div>
+65:        </div>
+66:      </div>
+67:    </div>
+68:    
+69:    <% end %>
+  
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+Started GET "/posts" for ::1 at 2020-10-14 14:28:41 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 11.9ms | Allocations: 1636)
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 0.2ms | Allocations: 3530)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% @posts.each do |post|%>
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+        <strong>
+          <%= post.user.name %>
+        </strong>
+        <% end %>
+
+        <% if post.user_id == current_user.id %>
+        <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+        <div class="delete-post-icon">
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+
+      <%= link_to(post_path(post)) do %>
+      <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+      <% end %>
+
+      <div class="card-body">
+        <div class="row parts">
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+            <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+
+            <% else %>
+            <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+            <% end %>
+          </div>
+          <%= link_to "", "#", class: "comment"%>
+        </div>
+
+        <div id="like-text-post-<%= post.id.to_s%>">
+          <%= render "like_text", { likes: post.likes } %>
+        </div>
+
+        <div>
+          <span><%= post.caption %></span>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list',{ post: post } %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前",post_path (post),class: "light-color post-time no-text-decoration"%>
+
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+            <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", 
+            placeholeder: "コメント....", autocomplete: :off %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+):
+1:    <% @posts.each do |post|%>
+2:    <div class="col-md-8 col-md-2 mx-auto">
+3:      <div class="card-wrap">
+4:        <div class="card">
+5:          <div class="card-header align-items-center d-flex">
+6:            <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+7:            <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+8:            <% end %>
+9:            <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+10:            <strong>
+11:              <%= post.user.name %>
+12:            </strong>
+13:            <% end %>
+14:    
+15:            <% if post.user_id == current_user.id %>
+16:            <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+17:            <div class="delete-post-icon">
+18:            </div>
+19:            <% end %>
+20:            <% end %>
+21:    
+22:          </div>
+23:    
+24:          <%= link_to(post_path(post)) do %>
+25:          <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+26:          <% end %>
+27:    
+28:          <div class="card-body">
+29:            <div class="row parts">
+30:              <div id="like-icon-post-<%= post.id.to_s %>">
+31:                <% if post.liked_by(current_user).present? %>
+32:                <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+33:    
+34:                <% else %>
+35:                <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+36:                <% end %>
+37:              </div>
+38:              <%= link_to "", "#", class: "comment"%>
+39:            </div>
+40:    
+41:            <div id="like-text-post-<%= post.id.to_s%>">
+42:              <%= render "like_text", { likes: post.likes } %>
+43:            </div>
+44:    
+45:            <div>
+46:              <span><%= post.caption %></span>
+47:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+48:    
+49:              <div id="comment-post-<%= post.id.to_s %>">
+50:                <%= render 'comment_list',{ post: post } %>
+51:              </div>
+52:              <%= link_to time_ago_in_words(post.created_at).upcase + "前",post_path (post),class: "light-color post-time no-text-decoration"%>
+53:    
+54:              <hr>
+55:              <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+56:                <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+57:                <%= f.hidden_field :user_id, value: current_user.id %>
+58:                <%= f.hidden_field :post_id, value: post.id %>
+59:                <%= f.text_field :comment, class: "form-control comment-input border-0", 
+60:                placeholeder: "コメント....", autocomplete: :off %>
+61:                <% end %>
+62:              </div>
+63:            </div>
+64:          </div>
+65:        </div>
+66:      </div>
+67:    </div>
+68:    
+69:    <% end %>
+  
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+Started GET "/posts" for ::1 at 2020-10-14 14:30:53 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.8ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (1.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 5.4ms | Allocations: 2718)
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 5.2ms | Allocations: 2698)
+  Rendered posts/index.html.erb within layouts/application (Duration: 451.3ms | Allocations: 226864)
+Completed 500 Internal Server Error in 456ms (ActiveRecord: 6.1ms | Allocations: 229573)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `comment' for #<#<Class:0x00007fc8c5a5ee80>:0x00007fc8c5a5d378>):
+    53: 
+    54:           <hr>
+    55:           <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+    56:             <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+    57:             <%= f.hidden_field :user_id, value: current_user.id %>
+    58:             <%= f.hidden_field :post_id, value: post.id %>
+    59:             <%= f.text_field :comment, class: "form-control comment-input border-0", 
+  
+app/views/posts/index.html.erb:56
+app/views/posts/index.html.erb:1
+Started GET "/posts" for ::1 at 2020-10-14 14:31:38 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.4ms | Allocations: 1939)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.4ms | Allocations: 964)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 3.2ms | Allocations: 1635)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.4ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 38.9ms | Allocations: 23050)
+DEPRECATION WARNING: autoprefixer-rails was deprected. Migration guide:
+https://github.com/ai/autoprefixer-rails/wiki/Deprecated (called from _app_views_layouts_application_html_erb__2777680816929983712_70250102837420 at /Users/yukiti/Like_instagram/app/views/layouts/application.html.erb:11)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 1.0ms | Allocations: 283)
+  Rendered partial/_footer.html.erb (Duration: 0.7ms | Allocations: 95)
+Completed 200 OK in 2402ms (Views: 2397.2ms | ActiveRecord: 2.1ms | Allocations: 159118)
+
+
+Started GET "/posts" for ::1 at 2020-10-14 14:31:44 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 4.4ms | Allocations: 1638)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.7ms | Allocations: 752)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 4.8ms | Allocations: 1635)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.9ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 34.1ms | Allocations: 13168)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.3ms | Allocations: 98)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 54ms (Views: 48.1ms | ActiveRecord: 2.4ms | Allocations: 23186)
+
+
+Started POST "/posts/4/comments" for ::1 at 2020-10-14 14:31:48 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/4/comments" for ::1 at 2020-10-14 14:31:49 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/4/comments" for ::1 at 2020-10-14 14:31:49 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/4/comments" for ::1 at 2020-10-14 14:31:50 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/4/comments" for ::1 at 2020-10-14 14:31:50 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started GET "/posts" for ::1 at 2020-10-14 14:31:53 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.7ms | Allocations: 1638)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.1ms | Allocations: 752)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 3.0ms | Allocations: 1635)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.2ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 24.9ms | Allocations: 13153)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 50ms (Views: 45.0ms | ActiveRecord: 2.0ms | Allocations: 23174)
+
+
+Started GET "/posts" for ::1 at 2020-10-14 14:31:59 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.5ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 4.0ms | Allocations: 1637)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.4ms | Allocations: 752)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.3ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 6.4ms | Allocations: 1635)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.8ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 35.9ms | Allocations: 13151)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 54ms (Views: 48.0ms | ActiveRecord: 2.7ms | Allocations: 23162)
+
+
+Started GET "/posts" for ::1 at 2020-10-14 14:32:05 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.3ms | Allocations: 1638)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 0.8ms | Allocations: 752)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.7ms | Allocations: 1635)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.6ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 20.5ms | Allocations: 13155)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 33ms (Views: 28.6ms | ActiveRecord: 1.7ms | Allocations: 23166)
+
+
+Started GET "/posts/5" for ::1 at 2020-10-14 14:32:52 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.8ms | Allocations: 1631)
+  Rendered posts/show.html.erb within layouts/application (Duration: 10.3ms | Allocations: 5476)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 98)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 27ms (Views: 21.8ms | ActiveRecord: 1.1ms | Allocations: 16279)
+
+
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:33:02 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:33:03 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:33:03 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:33:03 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:33:03 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:33:04 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:33:04 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:33:04 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:33:04 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:33:04 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started GET "/posts/5" for ::1 at 2020-10-14 14:33:07 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 9.2ms | Allocations: 1631)
+  Rendered posts/show.html.erb within layouts/application (Duration: 18.5ms | Allocations: 4934)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.6ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 38ms (Views: 32.5ms | ActiveRecord: 1.2ms | Allocations: 15463)
+
+
+Started GET "/posts" for ::1 at 2020-10-14 14:38:35 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.2ms | Allocations: 1652)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.1ms | Allocations: 769)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.4ms | Allocations: 1635)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.0ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 21.2ms | Allocations: 13241)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 34ms (Views: 29.1ms | ActiveRecord: 1.9ms | Allocations: 23276)
+
+
+Started GET "/posts" for ::1 at 2020-10-14 14:38:53 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 3.5ms | Allocations: 1938)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.6ms | Allocations: 964)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.5ms | Allocations: 1635)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.5ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 35.4ms | Allocations: 14742)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.6ms | Allocations: 267)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 53ms (Views: 48.9ms | ActiveRecord: 1.6ms | Allocations: 26510)
+
+
+Started GET "/posts" for ::1 at 2020-10-14 14:40:39 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 3.0ms | Allocations: 1938)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.9ms | Allocations: 964)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.1ms | Allocations: 1635)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 0.8ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 23.7ms | Allocations: 14734)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.5ms | Allocations: 267)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 40ms (Views: 34.7ms | ActiveRecord: 1.5ms | Allocations: 26491)
+
+
+Started GET "/posts" for ::1 at 2020-10-14 14:44:08 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.4ms | Allocations: 1938)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.7ms | Allocations: 964)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.1ms | Allocations: 1635)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 0.8ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 23.4ms | Allocations: 14732)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.6ms | Allocations: 267)
+  Rendered partial/_footer.html.erb (Duration: 0.2ms | Allocations: 92)
+Completed 200 OK in 39ms (Views: 34.8ms | ActiveRecord: 1.5ms | Allocations: 26481)
+
+
+Started GET "/posts" for ::1 at 2020-10-14 14:45:46 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 13.1ms | Allocations: 1639)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.4ms | Allocations: 752)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 1.8ms | Allocations: 1635)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 0.7ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 30.3ms | Allocations: 13167)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 98)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 1478ms (Views: 1474.1ms | ActiveRecord: 1.6ms | Allocations: 109245)
+
+
+Started GET "/posts" for ::1 at 2020-10-14 14:45:49 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 3.8ms | Allocations: 1637)
+  [1m[36mComment Load (0.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.6ms | Allocations: 752)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 3.2ms | Allocations: 1635)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 2.3ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 31.8ms | Allocations: 13151)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 50ms (Views: 44.4ms | ActiveRecord: 2.3ms | Allocations: 23168)
+
+
+Started GET "/posts/5" for ::1 at 2020-10-14 14:45:52 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.4ms | Allocations: 1631)
+  Rendered posts/show.html.erb within layouts/application (Duration: 18.9ms | Allocations: 5464)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 98)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 34ms (Views: 29.8ms | ActiveRecord: 0.9ms | Allocations: 16161)
+
+
+Started GET "/posts/5" for ::1 at 2020-10-14 14:45:59 +0900
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = ? LIMIT ?[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:50:in `set_post'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:5
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:12
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.9ms | Allocations: 1631)
+  Rendered posts/show.html.erb within layouts/application (Duration: 11.0ms | Allocations: 4934)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 29ms (Views: 23.7ms | ActiveRecord: 1.1ms | Allocations: 15465)
+
+
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:46:03 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:46:04 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:46:04 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started POST "/posts/5/comments" for ::1 at 2020-10-14 14:46:04 +0900
+  
+NoMethodError (undefined method `before_acttion' for CommentsController:Class
+Did you mean?  before_action):
+  
+app/controllers/comments_controller.rb:3:in `<class:CommentsController>'
+app/controllers/comments_controller.rb:1:in `<main>'
+Started GET "/posts" for ::1 at 2020-10-14 14:46:06 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.9ms | Allocations: 1637)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.2ms | Allocations: 752)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.5ms | Allocations: 1635)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.1ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 24.7ms | Allocations: 13153)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 38ms (Views: 33.0ms | ActiveRecord: 2.0ms | Allocations: 23163)
+
+
+Started GET "/posts" for ::1 at 2020-10-14 14:46:09 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 2.6ms | Allocations: 1637)
+  [1m[36mComment Load (0.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 5]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 1.1ms | Allocations: 752)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.2ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 4], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 4]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 3.6ms | Allocations: 1635)
+  [1m[36mComment Load (0.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = ?[0m  [["post_id", 4]]
+  ↳ app/views/posts/_comment_list.html.erb:1
+  Rendered posts/_comment_list.html.erb (Duration: 2.1ms | Allocations: 751)
+  Rendered posts/index.html.erb within layouts/application (Duration: 37.6ms | Allocations: 13153)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered partial/_navbar.html.erb (Duration: 0.2ms | Allocations: 96)
+  Rendered partial/_footer.html.erb (Duration: 0.0ms | Allocations: 5)
+Completed 200 OK in 51ms (Views: 46.2ms | ActiveRecord: 2.2ms | Allocations: 23167)
+
+
