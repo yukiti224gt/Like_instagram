@@ -28628,3 +28628,912 @@ Processing by PostsController#index as HTML
 Completed 200 OK in 50ms (Views: 45.5ms | ActiveRecord: 1.6ms | Allocations: 20633)
 
 
+Started GET "/" for ::1 at 2020-10-14 12:40:27 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY created_at DESC LIMIT ?[0m  [["LIMIT", 10]]
+  ↳ app/views/posts/index.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:6
+  [1m[36mPhoto Load (0.1ms)[0m  [1m[34mSELECT "photos".* FROM "photos" WHERE "photos"."post_id" = ? ORDER BY "photos"."id" ASC LIMIT ?[0m  [["post_id", 5], ["LIMIT", 1]]
+  ↳ app/views/posts/index.html.erb:25
+  [1m[36mLike Load (0.1ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mCACHE Like Load (0.0ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."user_id" = ? AND "likes"."post_id" = ? LIMIT ?[0m  [["user_id", 1], ["post_id", 5], ["LIMIT", 1]]
+  ↳ app/models/post.rb:13:in `liked_by'
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."post_id" = ? ORDER BY "likes"."created_at" DESC[0m  [["post_id", 5]]
+  ↳ app/views/posts/_like_text.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/views/posts/_like_text.html.erb:4
+  Rendered posts/_like_text.html.erb (Duration: 3.8ms | Allocations: 1938)
+  Rendered posts/index.html.erb within layouts/application (Duration: 15.0ms | Allocations: 8549)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 1.1ms | Allocations: 11256)
+
+
+  
+ActionView::Template::Error (Missing partial posts/_comment_list, application/_comment_list with {:locale=>[:ja], :formats=>[:html], :variants=>[], :handlers=>[:raw, :erb, :html, :builder, :ruby, :jbuilder]}. Searched in:
+  * "/Users/yukiti/Like_instagram/app/views"
+  * "/Library/Ruby/Gems/2.6.0/gems/devise-4.7.3/app/views"
+  * "/Library/Ruby/Gems/2.6.0/gems/actiontext-6.0.3.2/app/views"
+  * "/Library/Ruby/Gems/2.6.0/gems/actionmailbox-6.0.3.2/app/views"
+):
+    47:           <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+    48: 
+    49:           <div id="comment-post-<%= post.id.to_s %>">
+    50:             <%= render 'comment_list',{ post: post} %>
+    51:           </div>
+    52: 
+    53:           <hr>
+  
+app/views/posts/index.html.erb:50
+app/views/posts/index.html.erb:1
+Started GET "/" for ::1 at 2020-10-14 12:47:11 +0900
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1663)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms | Allocations: 4399)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% @posts.each do |post|%>
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+        <strong>
+          <%= post.user.name %>
+        </strong>
+        <% end %>
+
+        <% if post.user_id == current_user.id %>
+        <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+        <div class="delete-post-icon">
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+
+      <%= link_to(post_path(post)) do %>
+      <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+      <% end %>
+
+      <div class="card-body">
+        <div class="row parts">
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+            <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+
+            <% else %>
+            <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+            <% end %>
+          </div>
+          <%= link_to "", "#", class: "comment"%>
+        </div>
+
+        <div id="like-text-post-<%= post.id.to_s%>">
+          <%= render "like_text", { likes: post.likes } %>
+        </div>
+
+        <div>
+          <span><%= post.caption %></span>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list',{ post: post} %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+          class: "light-color post-time no-text-decoration "%>
+
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+            <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", 
+            placeholeder: "コメント....", autocomplete: :off %>
+            <% end %>
+          </div>
+          <div class="row parts">
+            <form action="#" class="w-100">
+              <div>
+                <textarea class="form-control comment-input border-0" placeholeder="コメント..." rows="1">
+                  </textarea>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+):
+1:    <% @posts.each do |post|%>
+2:    <div class="col-md-8 col-md-2 mx-auto">
+3:      <div class="card-wrap">
+4:        <div class="card">
+5:          <div class="card-header align-items-center d-flex">
+6:            <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+7:            <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+8:            <% end %>
+9:            <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+10:            <strong>
+11:              <%= post.user.name %>
+12:            </strong>
+13:            <% end %>
+14:    
+15:            <% if post.user_id == current_user.id %>
+16:            <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+17:            <div class="delete-post-icon">
+18:            </div>
+19:            <% end %>
+20:            <% end %>
+21:    
+22:          </div>
+23:    
+24:          <%= link_to(post_path(post)) do %>
+25:          <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+26:          <% end %>
+27:    
+28:          <div class="card-body">
+29:            <div class="row parts">
+30:              <div id="like-icon-post-<%= post.id.to_s %>">
+31:                <% if post.liked_by(current_user).present? %>
+32:                <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+33:    
+34:                <% else %>
+35:                <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+36:                <% end %>
+37:              </div>
+38:              <%= link_to "", "#", class: "comment"%>
+39:            </div>
+40:    
+41:            <div id="like-text-post-<%= post.id.to_s%>">
+42:              <%= render "like_text", { likes: post.likes } %>
+43:            </div>
+44:    
+45:            <div>
+46:              <span><%= post.caption %></span>
+47:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+48:    
+49:              <div id="comment-post-<%= post.id.to_s %>">
+50:                <%= render 'comment_list',{ post: post} %>
+51:              </div>
+52:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+53:              class: "light-color post-time no-text-decoration "%>
+54:    
+55:              <hr>
+56:              <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+57:                <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+58:                <%= f.hidden_field :user_id, value: current_user.id %>
+59:                <%= f.hidden_field :post_id, value: post.id %>
+60:                <%= f.text_field :comment, class: "form-control comment-input border-0", 
+61:                placeholeder: "コメント....", autocomplete: :off %>
+62:                <% end %>
+63:              </div>
+64:              <div class="row parts">
+65:                <form action="#" class="w-100">
+66:                  <div>
+67:                    <textarea class="form-control comment-input border-0" placeholeder="コメント..." rows="1">
+68:                      </textarea>
+69:                  </div>
+70:                </form>
+71:              </div>
+72:            </div>
+73:          </div>
+74:        </div>
+75:      </div>
+76:    </div>
+77:    
+78:    <% end %>
+  
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+Started GET "/" for ::1 at 2020-10-14 12:49:04 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.3ms | Allocations: 1659)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.2ms | Allocations: 4366)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% @posts.each do |post|%>
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+        <strong>
+          <%= post.user.name %>
+        </strong>
+        <% end %>
+
+        <% if post.user_id == current_user.id %>
+        <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+        <div class="delete-post-icon">
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+
+      <%= link_to(post_path(post)) do %>
+      <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+      <% end %>
+
+      <div class="card-body">
+        <div class="row parts">
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+            <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+
+            <% else %>
+            <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+            <% end %>
+          </div>
+          <%= link_to "", "#", class: "comment"%>
+        </div>
+
+        <div id="like-text-post-<%= post.id.to_s%>">
+          <%= render "like_text", { likes: post.likes } %>
+        </div>
+
+        <div>
+          <span><%= post.caption %></span>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list',{ post: post} %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+          class: "light-color post-time no-text-decoration"%>
+
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+            <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", 
+            placeholeder: "コメント....", autocomplete: :off %>
+            <% end %>
+          </div>
+          <div class="row parts">
+            <form action="#" class="w-100">
+              <div>
+                <textarea class="form-control comment-input border-0" placeholeder="コメント..." rows="1">
+                  </textarea>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+):
+1:    <% @posts.each do |post|%>
+2:    <div class="col-md-8 col-md-2 mx-auto">
+3:      <div class="card-wrap">
+4:        <div class="card">
+5:          <div class="card-header align-items-center d-flex">
+6:            <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+7:            <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+8:            <% end %>
+9:            <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+10:            <strong>
+11:              <%= post.user.name %>
+12:            </strong>
+13:            <% end %>
+14:    
+15:            <% if post.user_id == current_user.id %>
+16:            <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+17:            <div class="delete-post-icon">
+18:            </div>
+19:            <% end %>
+20:            <% end %>
+21:    
+22:          </div>
+23:    
+24:          <%= link_to(post_path(post)) do %>
+25:          <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+26:          <% end %>
+27:    
+28:          <div class="card-body">
+29:            <div class="row parts">
+30:              <div id="like-icon-post-<%= post.id.to_s %>">
+31:                <% if post.liked_by(current_user).present? %>
+32:                <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+33:    
+34:                <% else %>
+35:                <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+36:                <% end %>
+37:              </div>
+38:              <%= link_to "", "#", class: "comment"%>
+39:            </div>
+40:    
+41:            <div id="like-text-post-<%= post.id.to_s%>">
+42:              <%= render "like_text", { likes: post.likes } %>
+43:            </div>
+44:    
+45:            <div>
+46:              <span><%= post.caption %></span>
+47:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+48:    
+49:              <div id="comment-post-<%= post.id.to_s %>">
+50:                <%= render 'comment_list',{ post: post} %>
+51:              </div>
+52:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+53:              class: "light-color post-time no-text-decoration"%>
+54:    
+55:              <hr>
+56:              <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+57:                <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+58:                <%= f.hidden_field :user_id, value: current_user.id %>
+59:                <%= f.hidden_field :post_id, value: post.id %>
+60:                <%= f.text_field :comment, class: "form-control comment-input border-0", 
+61:                placeholeder: "コメント....", autocomplete: :off %>
+62:                <% end %>
+63:              </div>
+64:              <div class="row parts">
+65:                <form action="#" class="w-100">
+66:                  <div>
+67:                    <textarea class="form-control comment-input border-0" placeholeder="コメント..." rows="1">
+68:                      </textarea>
+69:                  </div>
+70:                </form>
+71:              </div>
+72:            </div>
+73:          </div>
+74:        </div>
+75:      </div>
+76:    </div>
+77:    
+78:    <% end %>
+  
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+Started GET "/" for ::1 at 2020-10-14 12:53:04 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1659)
+Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.3ms | Allocations: 4366)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% @posts.each do |post|%>
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+        <strong>
+          <%= post.user.name %>
+        </strong>
+        <% end %>
+
+        <% if post.user_id == current_user.id %>
+        <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+        <div class="delete-post-icon">
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+
+      <%= link_to(post_path(post)) do %>
+      <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+      <% end %>
+
+      <div class="card-body">
+        <div class="row parts">
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+            <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+
+            <% else %>
+            <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+            <% end %>
+          </div>
+          <%= link_to "", "#", class: "comment"%>
+        </div>
+
+        <div id="like-text-post-<%= post.id.to_s%>">
+          <%= render "like_text", { likes: post.likes } %>
+        </div>
+
+        <div>
+          <span><%= post.caption %></span>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list',{ post: post} %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+          class: "light-color post-time no-text-decoration"%>
+
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+            <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", 
+            placeholeder: "コメント....", autocomplete: :off %>
+            <% end %>
+          </div>
+          <div class="row parts">
+            <form action="#" class="w-100">
+              <div>
+                <textarea class="form-control comment-input border-0" placeholeder="コメント..." rows="1">
+                  </textarea>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+):
+1:    <% @posts.each do |post|%>
+2:    <div class="col-md-8 col-md-2 mx-auto">
+3:      <div class="card-wrap">
+4:        <div class="card">
+5:          <div class="card-header align-items-center d-flex">
+6:            <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+7:            <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+8:            <% end %>
+9:            <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+10:            <strong>
+11:              <%= post.user.name %>
+12:            </strong>
+13:            <% end %>
+14:    
+15:            <% if post.user_id == current_user.id %>
+16:            <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+17:            <div class="delete-post-icon">
+18:            </div>
+19:            <% end %>
+20:            <% end %>
+21:    
+22:          </div>
+23:    
+24:          <%= link_to(post_path(post)) do %>
+25:          <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+26:          <% end %>
+27:    
+28:          <div class="card-body">
+29:            <div class="row parts">
+30:              <div id="like-icon-post-<%= post.id.to_s %>">
+31:                <% if post.liked_by(current_user).present? %>
+32:                <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+33:    
+34:                <% else %>
+35:                <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+36:                <% end %>
+37:              </div>
+38:              <%= link_to "", "#", class: "comment"%>
+39:            </div>
+40:    
+41:            <div id="like-text-post-<%= post.id.to_s%>">
+42:              <%= render "like_text", { likes: post.likes } %>
+43:            </div>
+44:    
+45:            <div>
+46:              <span><%= post.caption %></span>
+47:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+48:    
+49:              <div id="comment-post-<%= post.id.to_s %>">
+50:                <%= render 'comment_list',{ post: post} %>
+51:              </div>
+52:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+53:              class: "light-color post-time no-text-decoration"%>
+54:    
+55:              <hr>
+56:              <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+57:                <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+58:                <%= f.hidden_field :user_id, value: current_user.id %>
+59:                <%= f.hidden_field :post_id, value: post.id %>
+60:                <%= f.text_field :comment, class: "form-control comment-input border-0", 
+61:                placeholeder: "コメント....", autocomplete: :off %>
+62:                <% end %>
+63:              </div>
+64:              <div class="row parts">
+65:                <form action="#" class="w-100">
+66:                  <div>
+67:                    <textarea class="form-control comment-input border-0" placeholeder="コメント..." rows="1">
+68:                      </textarea>
+69:                  </div>
+70:                </form>
+71:              </div>
+72:            </div>
+73:          </div>
+74:        </div>
+75:      </div>
+76:    </div>
+77:    
+78:    <% end %>
+  
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+Started GET "/" for ::1 at 2020-10-14 12:54:48 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 1656)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms | Allocations: 4363)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% @posts.each do |post|%>
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+        <strong>
+          <%= post.user.name %>
+        </strong>
+        <% end %>
+
+        <% if post.user_id == current_user.id %>
+        <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+        <div class="delete-post-icon">
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+
+      <%= link_to(post_path(post)) do %>
+      <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+      <% end %>
+
+      <div class="card-body">
+        <div class="row parts">
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+            <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+
+            <% else %>
+            <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+            <% end %>
+          </div>
+          <%= link_to "", "#", class: "comment"%>
+        </div>
+
+        <div id="like-text-post-<%= post.id.to_s%>">
+          <%= render "like_text", { likes: post.likes } %>
+        </div>
+
+        <div>
+          <span><%= post.caption %></span>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list',{ post: post} %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+          class: "light-color post-time no-text-decoration"%>
+
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+            <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", 
+            placeholeder: "コメント....", autocomplete: :off %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+):
+1:    <% @posts.each do |post|%>
+2:    <div class="col-md-8 col-md-2 mx-auto">
+3:      <div class="card-wrap">
+4:        <div class="card">
+5:          <div class="card-header align-items-center d-flex">
+6:            <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+7:            <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+8:            <% end %>
+9:            <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+10:            <strong>
+11:              <%= post.user.name %>
+12:            </strong>
+13:            <% end %>
+14:    
+15:            <% if post.user_id == current_user.id %>
+16:            <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+17:            <div class="delete-post-icon">
+18:            </div>
+19:            <% end %>
+20:            <% end %>
+21:    
+22:          </div>
+23:    
+24:          <%= link_to(post_path(post)) do %>
+25:          <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+26:          <% end %>
+27:    
+28:          <div class="card-body">
+29:            <div class="row parts">
+30:              <div id="like-icon-post-<%= post.id.to_s %>">
+31:                <% if post.liked_by(current_user).present? %>
+32:                <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+33:    
+34:                <% else %>
+35:                <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+36:                <% end %>
+37:              </div>
+38:              <%= link_to "", "#", class: "comment"%>
+39:            </div>
+40:    
+41:            <div id="like-text-post-<%= post.id.to_s%>">
+42:              <%= render "like_text", { likes: post.likes } %>
+43:            </div>
+44:    
+45:            <div>
+46:              <span><%= post.caption %></span>
+47:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+48:    
+49:              <div id="comment-post-<%= post.id.to_s %>">
+50:                <%= render 'comment_list',{ post: post} %>
+51:              </div>
+52:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+53:              class: "light-color post-time no-text-decoration"%>
+54:    
+55:              <hr>
+56:              <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+57:                <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+58:                <%= f.hidden_field :user_id, value: current_user.id %>
+59:                <%= f.hidden_field :post_id, value: post.id %>
+60:                <%= f.text_field :comment, class: "form-control comment-input border-0", 
+61:                placeholeder: "コメント....", autocomplete: :off %>
+62:                <% end %>
+63:              </div>
+64:            </div>
+65:          </div>
+66:        </div>
+67:      </div>
+68:    </div>
+69:    
+70:    <% end %>
+  
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+Started GET "/" for ::1 at 2020-10-14 12:57:51 +0900
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering posts/index.html.erb within layouts/application
+  Rendered posts/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1651)
+Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.2ms | Allocations: 4358)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <% @posts.each do |post|%>
+<div class="col-md-8 col-md-2 mx-auto">
+  <div class="card-wrap">
+    <div class="card">
+      <div class="card-header align-items-center d-flex">
+        <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+        <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+        <% end %>
+        <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+        <strong>
+          <%= post.user.name %>
+        </strong>
+        <% end %>
+
+        <% if post.user_id == current_user.id %>
+        <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+        <div class="delete-post-icon">
+        </div>
+        <% end %>
+        <% end %>
+
+      </div>
+
+      <%= link_to(post_path(post)) do %>
+      <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+      <% end %>
+
+      <div class="card-body">
+        <div class="row parts">
+          <div id="like-icon-post-<%= post.id.to_s %>">
+            <% if post.liked_by(current_user).present? %>
+            <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+
+            <% else %>
+            <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+            <% end %>
+          </div>
+          <%= link_to "", "#", class: "comment"%>
+        </div>
+
+        <div id="like-text-post-<%= post.id.to_s%>">
+          <%= render "like_text", { likes: post.likes } %>
+        </div>
+
+        <div>
+          <span><%= post.caption %></span>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+
+          <div id="comment-post-<%= post.id.to_s %>">
+            <%= render 'comment_list',{ post: post} %>
+          </div>
+          <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+          class: "light-color post-time no-text-decoration"%>
+
+          <hr>
+          <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+            <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.text_field :comment, class: "form-control comment-input border-0", 
+            placeholeder: "コメント....", autocomplete: :off %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<% end %>
+
+):
+1:    <% @posts.each do |post|%>
+2:    <div class="col-md-8 col-md-2 mx-auto">
+3:      <div class="card-wrap">
+4:        <div class="card">
+5:          <div class="card-header align-items-center d-flex">
+6:            <%= link_to user_path(post.user), class: "no-text-decoration" do %>
+7:            <%= image_tag avatar_url(post.user), class: "post-profile-icon"%>
+8:            <% end %>
+9:            <%= link_to user_path(post.user), class: "black-color no-text-decoration", title: post.user.name do%>
+10:            <strong>
+11:              <%= post.user.name %>
+12:            </strong>
+13:            <% end %>
+14:    
+15:            <% if post.user_id == current_user.id %>
+16:            <%= link_to post_path(post),method: :delete, class: "ml-auto mx-0 my-auto" do %>
+17:            <div class="delete-post-icon">
+18:            </div>
+19:            <% end %>
+20:            <% end %>
+21:    
+22:          </div>
+23:    
+24:          <%= link_to(post_path(post)) do %>
+25:          <%= image_tag post.photos.first.image.url(:medium), class: "card-img-top"%>
+26:          <% end %>
+27:    
+28:          <div class="card-body">
+29:            <div class="row parts">
+30:              <div id="like-icon-post-<%= post.id.to_s %>">
+31:                <% if post.liked_by(current_user).present? %>
+32:                <%= link_to "いいねを取り消す", post_like_path(post.id, post.liked_by(current_user)), method: :DELETE, remote: true, class: "loved hide-text"%>
+33:    
+34:                <% else %>
+35:                <%= link_to "いいね", post_likes_path(post), method: :POST, remote: true, class: "love hide-text"%>
+36:                <% end %>
+37:              </div>
+38:              <%= link_to "", "#", class: "comment"%>
+39:            </div>
+40:    
+41:            <div id="like-text-post-<%= post.id.to_s%>">
+42:              <%= render "like_text", { likes: post.likes } %>
+43:            </div>
+44:    
+45:            <div>
+46:              <span><%= post.caption %></span>
+47:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path(post), class: "post-time no-text-decoration"%>
+48:    
+49:              <div id="comment-post-<%= post.id.to_s %>">
+50:                <%= render 'comment_list',{ post: post} %>
+51:              </div>
+52:              <%= link_to time_ago_in_words(post.created_at).upcase + "前", post_path (post),
+53:              class: "light-color post-time no-text-decoration"%>
+54:    
+55:              <hr>
+56:              <div class="row actions" id="comment-form-post-<%= post.id.to_s%>">
+57:                <%= form_with model: [post, comment.new], class: "w-100" do |f|%>
+58:                <%= f.hidden_field :user_id, value: current_user.id %>
+59:                <%= f.hidden_field :post_id, value: post.id %>
+60:                <%= f.text_field :comment, class: "form-control comment-input border-0", 
+61:                placeholeder: "コメント....", autocomplete: :off %>
+62:                <% end %>
+63:              </div>
+64:            </div>
+65:          </div>
+66:        </div>
+67:      </div>
+68:    </div>
+69:    
+70:    <% end %>
+  
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
+app/views/posts/index.html.erb:52: syntax error, unexpected ( arg, expecting do or '{' or '('
+app/views/posts/index.html.erb:52: syntax error, unexpected ',', expecting ')'
